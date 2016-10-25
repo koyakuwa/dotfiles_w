@@ -1,0 +1,21 @@
+ServerAliveInterval 30
+
+Host seaside
+	HostName oceanbrothers.dip.jp
+	User koyakuwa
+	Port 28987
+	IdentityFile /home/koyak/.ssh/id_rsa_home
+
+Host super
+     HostName fx.cc.nagoya-u.ac.jp
+     User x09639a
+     IdentityFile /home/koyak/.ssh/id_rsa_super
+
+Host cx
+     HostName cx.cc.nagoya-u.ac.jp
+     User x09639a
+     IdentityFile /home/koyak/.ssh/id_rsa_super
+
+Host david
+     HostName 192.168.12.2
+     User koyakuwa

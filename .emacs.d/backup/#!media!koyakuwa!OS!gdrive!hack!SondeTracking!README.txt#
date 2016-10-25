@@ -1,0 +1,64 @@
+# README
+<Sonde Tracking Forecast Program>  ver. 2.0,  18 Nov 2010 by Shin Satoh
+
+(1) Preparation
+First, you should install "wgrib2" and "GrADS" (if you have not used them)
+wgrib2:  http://www.cpc.noaa.gov/products/wesley/wgrib2/
+GrADS:   http://grads.iges.org/grads/
+
+Next, you need to make the following programs.
+> cd prog
+> make
+
+(2) Edit some shell-script files
+At least, you should edit the PATH names in the following files:
+> cd ../shell_script
+> vi SondeTracking-MSM-GSM-03Z.sh
+> vi SondeTracking-MSM-GSM-15Z.sh
+> vi SondeTracking_manu_21h.sh
+ ==> (e.g.) prog1="~/SondeTracking/shell_script/wget_MSM-GPV.sh"
+ ==> (e.g.) prog2="~/SondeTracking/shell_script/wget_GSM-GPV.sh"
+ ==> (e.g.) prog3="~/SondeTracking/shell_script/grads_SondeTracking.sh"
+> vi grads_SondeTracking.sh
+> vi grads_SondeTracking_manu.sh
+ ==> (e.g.) prog2="~/SondeTracking/prog/grads_MSM-GSM_sonde"
+ ==> (e.g.) prog31="~/SondeTracking/prog/GrADS_script/ga_SondeTracking_Koganei"
+ ==> (e.g.) prog32="~/SondeTracking/prog/GrADS_script/ga_SondeTracking_Onna"
+ ==> (e.g.) prog33="~/SondeTracking/prog/GrADS_script/ga_SondeTracking_NagasakiMaru"
+ ==> (e.g.) prog34="~/SondeTracking/prog/GrADS_script/ga_SondeTracking_Shigaraki"
+ ==> (e.g.) export GASCRP="~/SondeTracking/prog/GrADS_script"
+ ==> (e.g.) arch_path="~/MSM-GSM-GPV/archive"
+ ==> (e.g.) work_path="~/MSM-GSM-GPV/work"
+ ==> (e.g.) Comment Out #===== upload png files into the web page ===== section
+> vi wget_MSM-GPV.sh
+> vi wget_GSM-GPV.sh
+ ==> (e.g.) arch_path="~/MSM-GSM-GPV/archive"
+
+*) The above examples is assumed that you decompressed the tgz file
+in your ~/SondeTracking directory.
+
+*) The following files is almost same, but ver 1.0
+  shell_script/SondeTracking-MSM-GSM-00Z.sh
+  shell_script/SondeTracking-MSM-GSM-12Z.sh
+  shell_script/SondeTracking-MSM-GSM-manu.sh
+  shell_script/SondeTracking_manu_12h_fcst.sh
+  shell_script/mk_SondeTracking_grads.sh
+  shell_script/wget_MSM-GSM-GPV.sh
+
+(3) Usage
+"SondeTracking_manu_21h.sh YYYY MM DD HH" is a manually run script.
+"SondeTracking-MSM-GSM-03(15)Z.sh" is for your crontab list.
+
+(4) Note
+ For more detail, see http://okinawa.nict.go.jp/SondeTrackingForecast/ (only Japanese)
+ There is no guarantee of your required results,
+ but welcome to your comments or bug-report to <satoh@nict.go.jp>.
+
+# wgrib2 install instruction
+以下のURLを使用する．
+http://wind.geophys.tohoku.ac.jp/~sawada/hiki/?wgrib2%A4%CE%A5%A4%A5%F3%A5%B9%A5%C8%A1%BC%A5%EB
+
+# grads install
+~~~
+sudo apt-get install grads
+~~~
