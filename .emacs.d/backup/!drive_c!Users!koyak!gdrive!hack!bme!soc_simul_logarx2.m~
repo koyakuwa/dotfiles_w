@@ -1,0 +1,125 @@
+% created 16/11/07
+% estimation of FCC function added
+
+%% 仮想的な実験データの作成
+% ここではモデルを用いて仮想的な実験データを生成する．
+% 時刻
+filename = 'data_i/input2pa.csv';
+input = csvread(filename);
+Ts = 1.0;
+% Ts = 0.02;
+t = input(:,1);
+N = length(t);
+% 入力（電流）の設定
+% u = 40 * sawtooth( t * sqrt( 2 ) ) + 10 * sin( t ) - 18;
+% 出力（電圧）の生成
+SOC0 = 100;          % 初期SOC[%]
+% FCC = 10000 * 3.6;
+FCC = 12000 * 3.6;
+aFCC = log(12000 * 3.6);    % 満充電容量[C]
+aR0 = log(0.450e-3);      % 直達抵抗[ohm]
+aRd = log(0.500e-3);      % 拡散抵抗[ohm]
+aCd = log(82000);         % 拡散容量[F]
+th0 = [ aR0, aRd, aCd, aFCC];
+Nd = 3;             % フォスター型回路の近似時数
+[ fl, hl, A, C, ymodel ] = batterymodel_foster_log( Nd );
+% シミュレーション
+% [ y0, x ] = ymodel( u, t, th0, [ SOC0; zeros( Nd, 1 ) ] );
+SOC = input(:,4);
+% 実験で得られるサンプル誤差を模擬
+% um = u + randn( 1, N ) * 0.1;    % 電流センサの誤差
+% ym = y0 + randn( 1, N ) * 0.01;  % 電圧センサの誤差
+um = input(:,2);
+ym = input(:,3);
+for k=1:N
+    um(k)=um(k)/ym(k);
+    ym(k)=ym(k)/4;
+    um(k)=-um(k);
+end
+
+%% 電流積算法
+% 推定値の格納領域の確保
+SOC_cc = zeros(1,N);
+% 初期設定値
+SOC_cc(1) = SOC0;
+for k=1:N-1
+    SOC_cc(k+1) = SOC_cc(k) + um(k) * Ts/FCC*100;
+end
+% plot(t/60, SOC_cc, 'r', 'LineWidth', 2) % 真値のプロット
+% % 図を出力
+% figure( 1 ), hold on
+% subplot( 3, 1, 1 ); plot( t/60, u )
+% ylabel( 'Current [A]' ), xlim( [ 0 Te/60 ] ), ylim( [ -100 50 ] )
+% subplot( 3, 1, 2 ); plot( t/60, y0 )
+% ylabel( 'Voltage [V]' ), xlim( [ 0 Te/60 ] ), ylim( [ 3.2 4.2 ] )
+% subplot( 3, 1, 3 ); plot( t/60, SOC )
+% ylabel( 'SOC [%]' ), xlim( [ 0 Te/60 ] ), ylim( [ 0 100 ] )
+% xlabel( 'TIme [min]')
+
+%% UKFを用いた同時推定法
+
+%----追加しました
+% 雑音の大きさの設定
+Q = diag([1e-3, 1e-6*ones(1,Nd)]); % システム雑音
+% R = 0.01^2; % 観測雑音
+R = 0.3; % 観測雑音
+%SOChat0 = OCV2SOC(ym(1));
+SOChat0 = 1.02e2;
+%----追加分はここで終了
+
+% z(拡大系の状態変数)とx(本来の状態変数)およびth(シータ，パラメータ)間の変換を行う関数群
+get_x = @(z) z(1:Nd+1);
+% get_th = @(z) [z(Nd+2), aRd, aCd, FCC]; % aR0以外は既知
+% get_th = @(z) [z(Nd+2),z(Nd+3),z(Nd+4),aFCC]; % FCCのみ既知
+get_th = @(z) [z(Nd+2),z(Nd+3),z(Nd+4),z(Nd+5)]; % FCCのみ既知
+make_z= @(x,aR0,aRd,aCd,aFCC) [x; aR0; aRd; aCd; aFCC];
+% 拡大系
+fz_ct = @(z,u) make_z(  fl( get_x(z), u, get_th(z) ),0,0,0,0);
+hz = @(z,u) hl(  get_x(z), u, get_th(z)  );
+% ルンゲ＝クッタ法による離散化
+fz_dt = c2d_rk4(fz_ct, Ts);
+% aR0推定値に対する誤差分散を設定
+Qz = blkdiag(Q,1e-5,1e-6,1e-8,1e-7);
+% 推定値の格納領域の確保
+zhat = zeros([Nd+5, N]); % 状態推定値
+P = zeros(Nd+5, Nd+5, N); % 推定分散
+%  初期設定
+zhat(:,1) = make_z(  [SOChat0; zeros(Nd,1)],log(2.500e-3),log(0.350e-3),log(85000),log(12600*3.6)); % 状態推定値
+P(:,:,1) = diag(   make_z(  [1; 1e-6*ones(Nd,1)],0.9,0.8,1,2)   ); % 誤差共分散
+% 時間更新
+for k=2:N
+    [zhat(:,k), P(:,:,k)]=...
+        ukf( @(z) fz_dt(z,um(k-1)), @(z) hz(z, um(k)),...
+        Qz, R, ym(k), zhat(:,k-1), P(:,:,k-1));
+        DATA=[t(k)/60, um(k), zhat(1,k)];
+        disp(DATA)
+end
+
+%% 結果の表示
+figure( 6 ), plot_socx(  t, zhat(1,:), squeeze( P(1,1,:) )' , SOC_cc);
+
+figure( 7 )
+subplot(2,2,1)
+set( gca, 'FontName','Arial','FontSize',9);
+plot_param_logx(t/60, exp(zhat(5,:)), squeeze(P(5,5,:))' ,exp(aR0));
+xlim([0 t(end)/60]),ylim([0,0.008]), xlabel('Time[min]','FontName','Arial','FontSize',11), ylabel('R_0[\Omega]','FontName','Arial','FontSize',11)
+
+subplot(2,2,2)
+set( gca, 'FontName','Arial','FontSize',9);
+plot_param_logx(t/60, exp( zhat(6,:)), squeeze(P(6,6,:))' ,...
+    exp(aRd));
+xlim([0 t(end)/60]),ylim([0,0.004]), xlabel('Time[min]','FontName','Arial','FontSize',11), ylabel('R_d[\Omega]','FontName','Arial','FontSize',11)
+
+subplot(2,2,3)
+set( gca, 'FontName','Arial','FontSize',9);
+plot_param_logx(t/60, exp(zhat(7,:)), squeeze(P(7,7,:))' ,...
+    exp(aCd));
+xlim([0 t(end)/60]),ylim([0,1500000]), xlabel('Time[min]','FontName','Arial','FontSize',11), ylabel('C_d[F]','FontName','Arial','FontSize',11)
+
+subplot(2,2,4)
+set( gca, 'FontName','Arial','FontSize',9);
+plot_param_logx(t/60, exp(zhat(8,:)), squeeze(P(8,8,:))' ,...
+    exp(aFCC));
+xlim([0 t(end)/60]),ylim([0,100000]), xlabel('Time[min]','FontName','Arial','FontSize',11), ylabel('FCC[C]','FontName','Arial','FontSize',11)
+
+% UKF_RMSE = sqrt( mean( (zhat(1,:)-SOC).^2, 2))

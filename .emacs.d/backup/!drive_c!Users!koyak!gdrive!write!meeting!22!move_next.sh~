@@ -1,0 +1,8 @@
+#!/bin/sh
+# platex --kanji=utf8 \m22.tex
+# pbibtex --kanji=utf8 \m22.aux
+# platex --kanji=utf8 \m22.tex
+# mendex \m22.nlo -s nomencl.ist -o \m22.nls
+platex --kanji=utf8 \m22.tex
+dvipdfmx \m22.dvi
+start \m22.pdf

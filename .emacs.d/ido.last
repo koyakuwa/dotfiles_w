@@ -1,0 +1,104 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("c:/Users/koyak/.emacs.d/" . "conf/")
+ ("c:/Users/koyak/gdrive/" . "hack/")
+ ("c:/Users/koyak/gdrive/hack/MATLABRobotics/PathPlanning/" . "Dijkstra/")
+ ("c:/Users/koyak/gdrive/hack/MATLABRobotics/" . "PathPlanning/")
+ ("c:/Users/koyak/gdrive/hack/" . "nonlinear_report/")
+ ("c:/Users/koyak/dotfiles_w/.emacs.d/" . "conf/")
+ ("c:/Users/" . "Rudolf/")
+ ("c:/Users/koyak/dotfiles_w/" . ".emacs.d/")
+ ("c:/Users/koyak/" . "dotfiles_w/")
+ ("c:/Users/koyak/gdrive/write/meeting/" . "22/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "c:/Users/koyak/dotfiles_w/.emacs.d/conf/"
+ "c:/Users/koyak/.emacs.d/conf/"
+ "c:/Users/koyak/gdrive/write/aa0_motion_control/"
+ "c:/Users/koyak/gdrive/write/done/group_seminar161025/"
+ "c:/Users/koyak/gdrive/hack/aa0/"
+ "c:/Users/koyak/gdrive/hack/nonlinear_report/"
+ "c:/Users/koyak/gdrive/hack/bunsan_report/"
+ "c:/Users/koyak/gdrive/hack/bme/"
+ "c:/Users/koyak/gdrive/hack/TDHMEID/"
+ "c:/Users/koyak/gdrive/hack/bme/m_box/"
+ "c:/Users/koyak/gdrive/hack/MATLABRobotics/PathPlanning/Dijkstra/"
+ "c:/Users/koyak/"
+ "c:/Users/koyak/vagrant/ubuntu/koyakuwa/cr_throne/"
+ "c:/Users/koyak/dotfiles_w/.emacs.d/"
+ "c:/Users/koyak/gdrive/write/meeting/22/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "05-hooks.el"
+ "04-util.el"
+ "03-keybind.el"
+ "02-view.el"
+ "01-config.el"
+ "memo_4.tex"
+ "tex2pdf.sh"
+ "memo_3.tex"
+ "sum.tex"
+ "anime.m"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("c:/Users/koyak/dotfiles_w/.emacs.d/conf/" (22585 12306 0 0) "30-scss.el" "24-matlab.el" "23-ruby.el" "22-objc.el" "21-js.el" "12-coffee.el" "08-markdown.el" "07-ag.el" "06-auto-complete.el" "05-hooks.el" "04-util.el" "03-keybind.el" "02-view.el" "01-config.el" ".#02-view.el" ".#01-config.el" "../" "./")
+
+ ("c:/Users/koyak/.emacs.d/conf/" (22574 54682 0 0) "30-scss.el" "24-matlab.el" "23-ruby.el" "22-objc.el" "21-js.el" "12-coffee.el" "08-markdown.el" "07-ag.el" "06-auto-complete.el" "05-hooks.el" "04-util.el" "03-keybind.el" "02-view.el" "01-config.el" "../" "./")
+
+ ("c:/Users/koyak/.emacs.d/" (22585 11408 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".cask/" "../" "./")
+
+ ("c:/Users/koyak/" (22585 7404 0 0) "スタート メニュー/" "VirtualBox VMs/" "Videos/" "Vagrantfile~" "Vagrantfile" "vagrant/" "Tracing/" "templogfile" "Templates/" "SendTo/" "Searches/" "Saved Games/" "Roaming/" "Recent/" "PrintHood/" "Pictures/" "packages.config" "OneDrive/" "ntuser.ini" "NTUSER.DAT{a5cdd7ec-a236-11e6-a149-a18ef7359427}.TMContainer00000000000000000002.regtrans-ms" "NTUSER.DAT{a5cdd7ec-a236-11e6-a149-a18ef7359427}.TMContainer00000000000000000001.regtrans-ms" "NTUSER.DAT{a5cdd7ec-a236-11e6-a149-a18ef7359427}.TM.blf" "ntuser.dat.LOG2" "ntuser.dat.LOG1" "NTUSER.DAT" "NetHood/" "My Documents/" "Music/" "mplayer/" "Local Settings/" "Links/" "kobito-v2.0.2/" "IntelGraphicsProfiles/" "gsview32.ini" "gdrive/" "Favorites/" "Evernote/" "Downloads/" "dotfiles_w/" "Documents/" "Desktop/" "Creative Cloud Files/" "Cookies/" "Contacts/" "cask/" "busybox.exe" "ardupilot/" "Application Data/" "AppData/" ".VirtualBox/" ".viminfo" ".vagrant.d/" ".vagrant/" ".tmux.conf" ".subversion/" ".ssh/" ".QtWebEngineProcess/" ".python_history" ".platformio/" ".oracle_jre_usage/" ".minttyrc" ".Mendeley Desktop/" ".matplotlib/" ".jssc/" ".gnuplot_history" ".gnupg/" ".gitconfig" ".emacs.d/" ".cache/" ".bash_profile" ".bash_history" ".bash_functions" ".bash_aliases" ".bashrc~" ".bashrc" ".atom/" ".ash_history" "#.bash_profile#" "#.bashrc#" "../" "./")
+
+ ("c:/Users/koyak/dotfiles_w/.emacs.d/" (22582 41204 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".cask/" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/aa0/" (22582 38235 0 0) "Seminar_Nagamatsu_20161101_rev1.zip" "Seminar_Nagamatsu_20161101_rev1/" "logmov.m" "ex2.m" "ex1.m" "anime.m" "../" "./")
+
+ ("c:/Users/koyak/gdrive/write/aa0_motion_control/" (22583 53925 0 0) "zippdf.sh" "xyz.jpg" "tex2pdf.sh" "super.png" "sup.png" "sum.tex" "sum.pdf" "sum.nlo" "sum.log" "sum.dvi" "sum.blg" "sum.bbl" "sum.aux" "sisei.png" "sisei.jpg" "replace.py" "path.png" "path.jpg" "path.eps" "memo_4.tex" "memo_3.tex" "memo_2.tex" "memo_1.tex" "memo.tex" "memo.md" "md2pdf.sh" "ichi.png" "group_seminar161025.pdf" "gain.png" "debug.log" "../" "./")
+
+ ("c:/Users/koyak/gdrive/write/done/group_seminar161025/" (22556 24518 0 0) "zippdf.sh" "usage_percetage.png" "tex2pdf.sh" "table1.tex" "sum.tex" "sum.pdf" "sum.nlo" "sum.log" "sum.dvi" "sum.blg" "sum.bbl" "sum.aux" "state_estimation.png" "SOC_by_EKF.eps" "SOC_by_CC.eps" "simultaneous_estimation.png" "seiritu.png" "replace.py" "range_ev.png" "plate.png" "model_based_est.png" "memo_2.tex" "memo_2.md" "memo_1.tex" "memo.tex" "memo.md" "md2pdf.sh" "li-ion.png" "io-data+SOC.eps" "foster1.png" "foster.png" "ev_io.png" "eq.png" "debug.log" "bat_funda.png" "bat_cell.png" "battery_state_est.png" "161025simul_soc_log.eps" "161023input.jpg" "161022simul_param_log.eps" "160613simul_soc_logar.eps" "160613simul_soc_log.eps" "160613simul_soc.eps" "160613simul_param_log.eps" "160613simul_param.eps" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/nonlinear_report/" (22579 61809 0 0) "script.tex" "script.md" "report.tex" "report.pdf" "report.out" "report.nlo" "report.log" "report.dvi" "report.aux" "replace.py" "output.data" "image23.png" "image223.png" "image22.png" "image2.png" "image12.png" "image112.png" "image11.png" "image1.png" "euler1.c" "euler.c" "a.exe" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/" (22579 61827 0 0) "TDHMEID/" "sontra.zip" "sontra/" "SondeTracking_prog_v2.0.tgz" "SondeTracking/" "soc_state/" "soc_cc/" "PSB_arduino/" "pot/" "nonlinear_report/" "nemo/" "NAFT_web/" "mpc_pathplan/" "MATLABRobotics/" "jsbsim/" "init.el~" "init.el" "hack/" "c_lec/" "cusf-standalone-predictor/" "cusf-burst-calc/" "bunsan_report/" "bme_c/" "bme-kaizou/" "bme/" "asu_code/" "ardupilot/" "aa0/" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/bunsan_report/" (22579 61175 0 0) "recording.mp4" "recording.avi" "quadcopter_formation_bak.ttt" "quadcopter_formation.ttt" "practice1.ttt" "formation6.jpeg" "formation5.jpeg" "formation4.jpeg" "formation3.jpeg" "formation2.jpeg" "formation1.jpeg" "fomation.m" "Decentralized overlapping control of a formation of unmanned aerial vehicles.pdf" "data2.csv" "data1.csv" "data.xlsx" "data.csv" "../" "./")
+
+ ("c:/Users/koyak/gdrive/" (22578 26013 0 0) "翼面積_forpre.gsheet" "翼面積.gsheet" "米田先生とDingさんVTOL新形状設計ミーティング議事録.gdoc" "新型ＶＴＯＬ設計.gslides" "プロジェクト報告書_kuwamura.gdoc" "スズキ財団平成２８年度科学技術研究助成申請書（提出用）.gdoc" "スズキ財団平成２８年度科学技術研究助成申請書（提出用）.doc" "XFLR Analysis.zip" "write/" "VTOL性能評価.gslides" "vtol_soc.gslides" "Vtol_23s_copy.zip" "verticle.zip" "sprint/" "sp24.gslides" "slide_group_seminar161025.gslides" "sbr_16s_opening.gslides" "report82.gsheet" "quad_soc.gslides" "PSB_AI.gsheet" "note160822.odp.gslides" "New VTOL Design Meeting with Prof.gdoc" "mars_presentation.pdf" "mAh2C.gsheet" "lithium_ion_energy_density.gsheet" "koyakuwa.zip" "hack/" "GroupSenminar160628_slide2.gslides" "GroupSenminar160628_slide.gslides" "f_ocv.gsheet" "ev_range.gsheet" "desktop.ini" "data161120.gsheet" "bib/" "aerosense最終プレゼン_sem.gslides" "aerosense最終プレゼン.gslides" "Aerosense_intern_budget.gsheet" "7957_名古屋大学AirCraft.pdf" "161026report.pdf" "160902soc_estimation.gslides" "160901cruising_range.gslides" ".tmp.drivedownload/" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/bme/" (22579 60332 0 0) "ut.m" "ukf.m" "soc_statex.m" "soc_state.m" "soc_simul_logarx2.m" "soc_simul_logarx2.bak4" "soc_simul_logarx2.bak3" "soc_simul_logarx2.bak2" "soc_simul_logarx2.bak" "soc_simul_logarx.m" "soc_simul_logar.m" "soc_simulx.m" "soc_simul.m" "soc_simul.bak" "soc_ccx.m" "SOC2OCV.m" "plot_socx.m" "plot_param_logx.m" "plot_param_log.m" "plot_paramx.m" "plot_param.m" "plot_input.m" "OCV2SOC.m" "numdiff.m" "m_box/" "many.m" "image/" "gra_soc_simul.m" "func_soc_simul_logax.m" "ekf.m" "data_o/" "data_i/" "c_box/" "c2d_rk4.m" "c2d_euler.m" "batterymodel_foster_log.m" "batterymodel_foster.m" "../" "./")
+
+ ("c:/Users/koyak/vagrant/ubuntu/koyakuwa/cr_throne/" (22569 28530 0 0) "soc_cc-watt.c" "sdlog2_dump.py" "replace.py" "readme.md" "pwm2watt.c" "plot_soc_nice.sh" "plot_soc.sh" "plot_cr.txt" "many.sh" "main.c" "img_soc_nice.png" "cr.sh" "a.out" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/bme/m_box/" (22574 45717 0 0) "soc_simul.c~" "soc.bak" "plot_SOC.m~" "plot_SOC.m" "numdiff.prj" "mchol.cpp" "ex_batt_stat.m" "ex_batt_simul.m" "ex_batt.m" "ekf.prj" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/TDHMEID/" (22556 28631 0 0) "TDH_p.m" "TDH_h.m" "TDH_a.m" "TDH.m" "rgk4.m" "README.md" "pmeid_prm.m" "pmeid.m" "noMEID.m" "hmeid_str.m" "hmeid_prm.m" "hmeid.m" "ameid_prm.m" "ameid.m" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/MATLABRobotics/PathPlanning/Dijkstra/" (22556 26184 0 0) "DijkstraSample.m" "cost.m" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/MATLABRobotics/PathPlanning/" (22556 23936 0 0) "PathSmoothing/" "HybridAStar/" "DynamicWindowApproach/" "Dijkstra/" "CompleteCoveragePathPlanning/" "AStar/" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/MATLABRobotics/" (22556 26271 0 0) "SLAM/" "README.md" "PathPlanning/" "Mapping/" "MachineLearning/" "Localization/" "CommonTools/" "Clustering/" ".git/" "../" "./")
+
+ ("c:/Users/koyak/gdrive/hack/mpc_pathplan/" (22574 27477 0 0) "sample.py" "main.py" "../" "./")
+
+ ("c:/Users/" (22555 64740 0 0) "Rudolf/" "Public/" "koyak/" "desktop.ini" "Default User/" "Default/" "All Users/" "../" "./")
+
+ ("c:/Users/koyak/dotfiles_w/" (22547 3098 0 0) "dotfilesLink.sh" ".git/" ".emacs.d/" ".bash_profile" ".bash_functions" ".bash_aliases" "../" "./")
+
+ ("c:/Users/koyak/gdrive/write/meeting/22/" (22559 63886 0 0) "zippdf.sh" "tab_simulation_condition.tex" "replace.py" "move_next.sh" "memo.tex" "memo.md" "md2pdf.sh" "m22.tex" "m22.pdf" "m22.out" "m22.nlo" "m22.log" "m22.dvi" "m22.aux" "img_voltage.png" "img_soc.png" "debug.log" "#022.pdf" "../" "./")
+
+ ("c:/Users/koyak/gdrive/write/meeting/" (22556 26304 0 0) "debug.log" "30/" "29/" "28/" "27/" "26/" "25/" "24/" "23/" "22/" "21/" "20/" "19/" "18/" "17/" "16/" "15/" "14/" "13/" "12/" "11/" "10/" "09/" "08/" "07/" "06/" "05/" "04/" "03/" "02/" "01/" "00/" "#022_kuwamura.zip" "#021_kuwamura.zip" "#020_kuwamura.zip" "#019_kuwamura.zip" "#019_2_kuwamura.zip" "#014_kuwamura.zip" "#013_kuwamura.zip" "#012_kuwamura.zip" "#011_kuwamura.zip" "#010_kuwamura.zip" "#009_kuwamura.zip" "#008_kuwamura.zip" "#007_kuwamura.zip" "#006_kuwamura.zip" "#005_kuwamura.zip" "#004_kuwamura.zip" "#003_kuwamura.zip" "#002_kuwamura.zip" "../" "./")
+
+ ("c:/Users/koyak/gdrive/write/meeting/23/" (22559 63890 0 0) "zippdf.sh" "replace.py" "move_next.sh" "memo.md" "md2pdf.sh" "m23.tex" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

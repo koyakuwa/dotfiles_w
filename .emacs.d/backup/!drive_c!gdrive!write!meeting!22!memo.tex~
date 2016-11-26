@@ -1,0 +1,50 @@
+\section{先週のAI一覧}\label{ux5148ux9031ux306eaiux4e00ux89a7}
+\begin{itemize}
+\tightlist
+\item
+  シミュレーション結果出力プログラムの利用可能とする
+\end{itemize}
+
+\section{シミュレーション結果の出力}\label{ux30b7ux30dfux30e5ux30ecux30fcux30b7ux30e7ux30f3ux7d50ux679cux306eux51faux529b}
+前回のミーティング資料で出力できなかったシミュレーション結果を
+出力できるようになったため, 以下に結果をまとめる.
+今回はPX4に謹製のシミュレータそのままで計算した.
+まず, シミュレーション条件を述べる.  \input{tab_simulation_condition}
+この条件では, バッテリーの電圧 \(v(t)\) が時間に対して線形に減少する.
+以下の式で記述されている.
+\begin{equation} v(t) = \left(\mathrm{v_{max}} - \mathrm{v_{dis}} \cdot \frac{t - t_0}{ \mathrm{T_{dis}}}\right)  \times \mathrm{n} \end{equation}
+\begin{equation} \mathrm{v_{dis}} = \mathrm{v_{max}} - \mathrm{v_{min}}\end{equation} \(t_0\)
+は初期時刻を示す. \(T\)は機体のスロットルの示す
+その他の設定パラメータはTable 1 に示す.  また, 充電率
+\(SOC(t)\) は以下の式で求められる.
+\begin{equation} SOC(t) = 100 \times \frac{v(t) - n \cdot \mathrm{v_{min}} } { n\cdot\{\mathrm{v_{max}} - (1-T)\cdot \mathrm{v_{min}} \}}\end{equation}
+Fig 1 とFig 2
+に, シミュレーション結果の電圧と充電率のそれぞれの時間履歴を示す.
+ただし, 電圧は単一セルの電圧でプロットした.
+このように, PX4のシミュレータには単純なバッテリーモデルのみ組み込まれている.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=7cm]{img_voltage.png}
+\caption{Time history of the voltage}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=7cm]{img_soc.png}
+\caption{Time history of the SOC}
+\end{figure}
+
+\section{今週のAI計画}\label{ux4ecaux9031ux306eaiux8a08ux753b}
+\begin{itemize}
+\tightlist
+\item
+  PX4 のシミュテータ環境のバッテリーモデルの改善
+\item
+  対数化UKFを用いた推定法のパラメータ推定精度の改善
+
+  \begin{itemize}
+  \tightlist
+  \item
+    今まで一つの入出力データのみ利用していたので, 複数のデータを用いてパラメータ推定値を検証する
+  \end{itemize}
+\end{itemize}

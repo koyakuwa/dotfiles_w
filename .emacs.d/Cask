@@ -38,7 +38,7 @@
 (depends-on "yaml-mode")
 (depends-on "web-mode")
 (depends-on "scss-mode")
-
+(depends-on "markdown-mode")
 ;; Ruby
 (depends-on "ruby-electric")
 (depends-on "ruby-block")
@@ -55,3 +55,6 @@
 
 ;; PHP
 (depends-on "php-mode")
+
+;; matlab
+(depends-on "matlab-mode")

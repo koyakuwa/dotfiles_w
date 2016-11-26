@@ -1,0 +1,379 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\@maketitle{
+	\begin{center}
+		~\\
+		\vspace{40mm}
+		{\huge \@thesis \par} 
+		\vspace{40mm}
+		{\LARGE\bf \@title \par}
+		\vspace{0mm}
+		{\large \@date\par} 
+		\vspace{70mm}
+		{\Large \@department \par} 
+		{\Large 学籍番号　\@id \par} 
+		\vspace{20mm}
+		{\Large \@author}
+	\end{center}
+	\par\vskip 1.5em
+}
+
+\makeatother
+
+\title{重心移動を利用した可変長振子の制振制御}
+\date{\today}
+\department{工学研究科　航空宇宙工学専攻\\博士課程　前期課程1年}
+\id{281644156}
+\author{浜崎　隼}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{背景}\label{ux80ccux666f}
+
+近年, クアッドコプターの産業応用が増加している. これは,
+クアッドコプターの操作が簡易的で低コストで導入が容易な点やホバリングすることが可能なこと所以の扱いやすさ,
+応用の幅が広い点
+小型化可能な点
+などの複数の長所が理由であるといえる.
+クアッドコプターは, 従来の航空機ではできないことを実現した.
+しかし, クアッドコプターは活動時間が短い点が欠点である.
+これは, ホバリング状態を維持するには, 電力を消費し続けるためである.
+
+昨今, 無人航空機のVTOL, 固定翼機にホバリング性能を付加し, 巡航性能と扱いやすさ両立を目指す機体の開発が増えている.
+
+Tilt-rotor型, Tilt-wing型, Tail-sitter型など,
+様々な種類が存在するが,
+全ての方式でホバリングモードから, 航空機モードへの遷移過程がある.
+つまり, VTOLにおいても
+クアッドコプターの制御思想が組み込まれている.
+
+そこで, 本レポートでは,
+昨今需要が増えているクアッドコプターと
+近未来に需要が増えると予想されるVTOLの
+制御について教養を深めるために,
+クアッドコプターのモーションコントロールの理解を目的とする.
+
+\section{シミュレーション
+\cite{bouabdallah2004design} \cite{bouabdallah2005backstepping}
+\cite{bouabdallah2007full}}\label{ux7406ux8ad6}
+\subsection{クアッドコプターの運動モデル}
+
+ニュートン及びオイラーの運動方程式より,
+\begin{equation}
+  \begin{bmatrix}
+  m I_{3\times3} & 0 \\
+  0 & I
+  \end{bmatrix}
+  \begin{bmatrix}
+  \dot{V}\\
+  \dot{\omega}
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+  \omega \times m V\\
+  \omega \times I \omega
+  \end{bmatrix}
+  \begin{bmatrix}
+  F\\
+  \tau
+  \end{bmatrix}
+\end{equation}
+
+上式から,
+ここでヘリコプターの運動方程式を以下のように示すことができる.
+\begin{eqnarray}
+  \begin{cases}
+  \dot{\zeta} = v\\
+  m \dot{v} = R F_b\\
+  \dot{R} = R \hat{\omega}\\
+  J \dot{\omega} = - \omega \times J \omega + \tau_a
+  \end{cases}
+\end{eqnarray}
+
+同様にクアッドコプターの運動方程式は,
+\begin{eqnarray}
+  \begin{cases}
+  \dot{\zeta} = v\\
+  \dot{v} = -g e_3 + R_{e_3} \left(\frac{b}{m}\sigma \Omega^2_i \right)\\
+  \dot{R} = R \hat{\omega}\\
+  I \dot{\omega} = - \omega \times I \omega - \sigma J_r ( \omega \times e_3) \omega_i + \tau_a
+  \end{cases}
+\end{eqnarray}
+
+where:
+\begin{table}[H]
+  \centering
+  \small{
+  \begin{tabular}{|r|l|}
+  \hline
+  Symbol & defnition \\ \hline
+  $\zeta$ & position vector \\
+  $R$ & rotation matrix \\
+  $\hat{\omega}$ & skew symmetric matrix \\
+  $\phi$ & roll angle \\
+  $\theta$ & pitch angle \\
+  $\psi$ & yaw angle \\
+  $\Omega$ & rotor speed \\
+  $I_{x,y,z}$ & body inertia \\
+  $J_r$ & rotor inertia \\
+  $J_m$ & motor inertia \\
+  $J_p$ & propeller inertia \\
+  $\tau_a$ & torque on airframe body \\
+  $b$ & thrust factor \\
+  $d$ & drag factor \\
+  $l$ & lever \\ \hline
+  \end{tabular}
+  }
+\end{table}
+となる.
+クアッドコプターでは, 各軸に働くトルクが異なるため,
+\begin{equation}
+  \tau_a =
+  \begin{pmatrix}
+  l b (\Omega_4^2 - \Omega_2^2)\\
+  l b (\Omega_3^2 - \Omega_1^2)\\
+  d (\Omega_2^2 - \Omega_4^2 - \Omega_1^2 - \Omega_3^2)
+  \end{pmatrix}
+\end{equation}
+
+機体に作用する慣性は,
+モーターとプロペラの慣性から
+\begin{equation}
+  J_r = J_p - J_m r
+\end{equation}
+と表せる.
+
+以上より, クアッドコプターの運動モデルは, 以下のように記述できる.
+\begin{eqnarray}
+  \begin{cases}    \ddot{\phi}=\dot{\theta}\dot{\phi}\left(\frac{I_y - I_z}{I_x}\right)-\frac{J_r}{I_x}\dot{\theta}\Omega + \frac{l}{I_x} U_2\\
+  \ddot{\theta}=\dot{\phi}\dot{\psi}\left(\frac{I_z - I_x}{I_y}\right)-\frac{J_r}{I_y}\dot{\phi}\Omega + \frac{l}{I_y} U_3\\
+  \ddot{\psi}=\dot{\phi}\dot{\theta}\left(\frac{I_x - I_y}{I_z}\right) + \frac{1}{I_z} U_4\\
+  \ddot{z} = -g + (\cos{\phi} \cos{\theta}) \frac{1}{m} U_1\\
+  \ddot{x} = (\cos{\phi} \sin{\theta} \cos{\psi} + \sin{\phi} \sin{\psi})\frac{1}{m} U_1\\
+  \ddot{y} = (\cos{\phi} \sin{\theta} \sin{\psi} - \sin{\phi} \cos{\psi})\frac{1}{m} U_1
+  \end{cases}
+\end{eqnarray}
+ただし,
+\begin{eqnarray}
+  \begin{cases}
+  U_1 = b (\Omega_1^2 + \Omega_2^2 + \Omega_3^2 + \Omega_4^2)\\
+  U_2 = b (\Omega_4^2 - \Omega_2^2)\\
+  U_3 = b (\Omega_3^2 - \Omega_1^2)\\
+  U_4 = d (\Omega_2^2 + \Omega_4^2 - \Omega_1^2 - \Omega_3^2)\\
+  \Omega = \Omega_2 + \Omega_4 - \Omega_1 - \Omega_3
+  \end{cases}
+\end{eqnarray}
+である.
+次に, $\dot{X}=f(X,U)$の形で整理する.
+$X$は12個の変数で以下のように設定する.
+\begin{equation}
+\begin{array}{l|l}
+  x_1 = \phi & x_7 = z\\
+  x_2 = \dot{x_1} = \dot{\phi} & x_8 = \dot{x_7} = \dot{z} \\
+  x_3 = \theta & x_9 = x\\
+  x_4 = \dot{x_3} = \dot{\theta} & x_{10} = \dot{x_9} = \dot{x}\\
+  x_5 = \psi & x_{11} = y\\
+  x_6 = \dot{x_5} = \dot{\psi} & x_{12} = \dot{x_{11}} = \dot{y}\\
+\end{array}
+\end{equation}
+上の状態変数を用いると式(6)から
+\begin{equation}
+  f(X,U) =
+  \begin{pmatrix}
+  x_2\\
+  x_4 x_6 a_1 + x_4 a_2 \Omega + b_1 U_2\\
+  x_4\\
+  x_2 x_6 a_3 + x_2 a_4 \Omega + b_2 U_3\\
+  x_6\\
+  x_4 x_2 a_5 + b_3 U_4\\
+  x_8\\
+  -g + (\cos{x_1} \cos{x_3} \frac{1}{m} U_1)\\
+  x_{10}\\
+  u_x \frac{l}{m} U_1\\
+  x_{12}\\
+  u_y \frac{l}{m} U_1\\
+  \end{pmatrix}
+\end{equation}
+With:
+\begin{equation}
+  \begin{array}{l|l}
+  a_1 = (I_y - I_z)/I_x & b_1 = l / I_x\\
+  a_2 = - J_r / I_x & b_2 = l / I_y\\
+  a_3 = (I_z - I_x)/I_y & b_3 = l / I_z\\
+  a_4 = J_r / I_y &\\
+  a_5 = (I_x - I_y)/I_z &
+  \end{array}
+\end{equation}
+と表せる.
+ただし,
+\begin{eqnarray}
+  \begin{split}
+  ux &= \cos{x_1} \sin{x_3} \cos{x_5}+ \sin{x_1} \sin{x_5}\\
+  uy &= \cos{x_1} \sin{x_3} \sin{x_5}+ \sin{x_1} \cos{x_5}
+  \end{split}
+\end{eqnarray}
+である.
+\subsection{バックステッピング法を用いた制御系設計}
+式(6)より姿勢および位置について図1のように分離して,
+2つのサブシステムの構成として考えることが可能である.
+最初に, 姿勢制御について考える.
+まず, ロール制御の式に注目する.
+ここで目標値を添え字$d$を用いて記述することとする.
+このとき, その偏差は,
+\begin{equation}
+  z_1 = x_{1d} - x_1
+\end{equation}
+リアプノフ関数を以下の式のように導入する.
+\begin{equation}
+  V(z_1) = \frac{1}{2} z_1^2
+\end{equation}
+微分より,
+\begin{equation}
+  \dot{V}(z_1) = z_1 (\dot{x}_{1d} - x_2)
+\end{equation}
+仮想的な$x_2$の入力を以下のように記述すると,
+\begin{equation}
+  x_2 = \dot{x}_{1d} + \alpha_1 z_1~~~with: \alpha_1 > 0
+\end{equation}
+となり, 以下を示せる.
+\begin{equation}
+  \dot{V}(z_1) = - \alpha_1 z_1^2
+\end{equation}
+ここで$z_2$について以下のように定義する.
+\begin{equation}
+  z_2 = x_2 - \dot{x}_{1d} - \alpha_1 z_1
+\end{equation}
+再度, リアプノフ関数を考える.
+\begin{equation}
+  V(z_1, z_2) = \frac{1}{2}(z_1^2 + z_2^2)
+\end{equation}
+微分より,
+\begin{equation}
+  \begin{split}
+  \dot{V}(z_1, z_2) &= z_2 (a_1 x_4 x_6 + a_2 x_4 \Omega + b_1 U_2)\\
+  & - z_2 ( \ddot{x}_{1d} - \alpha_1 (z_2 + \alpha_1 z_1))\\
+  & - z_1 z_2 - \alpha_1 z_1^2
+  \end{split}
+\end{equation}
+上式より$U_2$を以下のように決定する.
+\begin{equation}
+  U_2 = \frac{1}{b_1}(z_1 - a_1 x_4 x_6 - a_2 x_4 \Omega) - \alpha_1 (z_2 + \alpha_1 z_1) - \alpha_2 z_2 )
+\end{equation}
+上式より$z_2$も安定化できた.
+同様に$U_3,~U_4$も以下のように決定できる.
+\begin{equation}
+  U_3 = \frac{1}{b_2}(z_3 - a_3 x_ 2 x_6 - a_4 x_2 \omega \alpha_3 (z_4 + \alpha_3 z_3) -\alpha_4 z_4)
+\end{equation}
+\begin{equation}
+  U_4 = \frac{1}{b_2}( z_5 - a_5 x_ 2 x_4 - \alpha_5 ( z_6 + alpha_5 z_5 ) - \alpha_6 z_6)
+\end{equation}
+with:
+\begin{eqnarray}
+  \begin{cases}
+  z_3 = x_{3d} - x_3\\
+  z_4 = \dot{x}_{3d} - \alpha_3 z_3\\
+  z_5 = x_{5d} - x_5\\
+  z_6 = \dot{x}_{5d} - \alpha_5 z_5\\
+  \end{cases}
+\end{eqnarray}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=8cm]{sup.png}
+\caption{Connection of the two ideal subsystems of the overall dynamical system described by mapping$^{[2]}$}
+\end{figure}
+
+\begin{figure*}[tb]
+\centering
+\includegraphics[width=10cm]{super.png}
+\caption{The control structure implemented on OS4$^{[3]}$}
+\end{figure*}
+
+次に高度の制御について考える.
+姿勢制御の制御系と同様な考え方から
+以下のように, $U_1$を決定できる.
+\begin{equation}
+  U_1 = \frac{m}{\cos{x_1}\cos{x_3}}( z_7 + g - \alpha_7 ( z_8 + \alpha_7 z_7 ) - \alpha_8 z_8)
+\end{equation}
+with:\begin{eqnarray}
+  \begin{cases}
+  z_7 = x_{7d} - x_7\\
+  z_8 = \dot{x}_{7d} - \alpha_7 z_7\\
+  \end{cases}
+\end{eqnarray}
+
+最後に, $x,y$の制御について考える.
+式より, x軸, y軸の運動は$U_1$に依存するが,
+その作用する方向は, $\phi,~\theta$によって決まる.
+したがって, ターゲット角度を導入することで,
+$U_1$から分離することが可能である.
+図2のように, ターゲット位置からターゲット角度（roll, pitch）が決まる.
+以上より
+\begin{equation}
+  \begin{split}
+  u_x &= (m/U_1)(z_9 - \alpha_9 (z_{10} + \alpha_9 z_9) - \alpha_{10} z_{10})\\
+  u_y &= (m/U_1)(z_{11} - \alpha_{11} (z_{12} + \alpha_{11} z_{11}) - \alpha_{12} z_{12})
+  \end{split}
+\end{equation}
+with:
+\begin{eqnarray}
+  \begin{cases}
+  z_9 = x_{9d}-x_9\\
+  z_{10} = x_{10} - \alpha_9 ( x_{9d} - x_9)\\
+  z_{11} = x_{11d} - x_{11}\\
+  z_{12} = x_{12} - \alpha_{11}( x_{11d} - x_{11})
+  \end{cases}
+\end{eqnarray}
+と記述できる.
+
+\subsection{計算}\label{ux8a08ux7b97}
+
+以下のように計算条件を設定した.
+
+\begin{table}[H]
+  \centering
+  \small{
+  \begin{tabular}{|l|l|}
+  \hline
+  initial condition $x_0$ & $[~0.8~0~0.8~0~0.8~0$\\
+  & $~0~0~0~0~0~0]^T$\\ \hline
+  target position $x_d$ & $[0~0~0~0~0~0$\\
+  & $~2~0~2~0~2~0]^T$\\ \hline
+  mass~$m$~[kg] & 1 \\ \hline
+  rotor speed~$\Omega$~[rpm] & 5000 \\ \hline
+  body inertia~$I_{x,y,z}$~[m$^2$ $\cdot$ kg] & 0.0016 \\ \hline
+  rotor inertia~$J_r$~[kg m$^2$]& 0.1\\ \hline
+  lever~$l$~[m] & 0.2 \\ \hline
+  gain $\alpha $ & $[~0.5~0.01~0.5~0.1~0.5~0.1$\\
+  & $ ~0.5~0.2~0.5~0.2~0.5~0.2~]^T$\\ \hline
+  \end{tabular}
+  }
+\end{table}
+
+図3から6に姿勢角, 位置および軌道のシミュレーション結果を示す.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=8cm]{sisei.png}
+\caption{姿勢角のシミュレーション結果}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=8cm]{ichi.png}
+\caption{位置のシミュレーション結果}
+\end{figure}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=8cm]{path.png}
+\caption{軌道のシミュレーション結果}
+\end{figure}
+
+目標値に収束していることが確認できた.
+
+\section{結論}\label{ux7d50ux8ad6}
+\begin{itemize}
+    \item クアッドコプターの運動モデルを学習した
+    \item バックステッピング法を用いた制御則を学習した
+
+\end{itemize}

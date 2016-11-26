@@ -30,6 +30,9 @@
 
 ;; menu-barを非表示
 (menu-bar-mode 0)
+(tool-bar-mode -1)
+;; スクロールバーを非表示
+(scroll-bar-mode 0)
 
 ;; 表示・修飾に関する設定 ------------------------------
 (when (require 'color-theme nil t)

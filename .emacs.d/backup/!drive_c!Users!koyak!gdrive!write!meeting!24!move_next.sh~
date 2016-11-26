@@ -1,0 +1,5 @@
+#!/bin/sh
+cp m23.tex ../24/m24.tex
+cp replace.py ../24
+cp *.sh ../24
+cp memo.md ../24

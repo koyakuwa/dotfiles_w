@@ -1,0 +1,122 @@
+x = [0.8 0 0.8 0 0.8 0 0 0 0 0 0 0]';
+xd = [0 0 0 0 0 0 2 0 2 0 2 0]';
+U = [0 0 0 0]';
+m = 1;
+JR = 1;
+omega = 10;
+dt = 0.001;
+tf = 25;
+xx = [];
+d = [];
+i = 0;
+g = 9.81;
+l = 0.5;
+Ix = 0.4 * m * l * l;
+Iy = Ix;
+Iz = Ix;
+z = [0 0 0 0 0 0 0 0 0 0 0 0];
+
+a = [( (Ix-Iy)/Ix );
+     ( (-JR)/Ix );
+     ( (Iz-Ix)/Iy );
+     ( (-JR)/Iy );
+     ( (Ix-Iy)/Ix )];
+b = [ ( l/Ix );
+      ( l/Iy );
+      ( l/Iz ) ];
+dxd = [ 0 0 0 0 0 0 0 0 0 0 0 0]';
+alpha = [ 0.5 0.01 0.5 0.1 0.5 0.1 0.5 0.2 0.5 0.2 0.5 0.2]';
+% alpha = [ 5 1 5 1 5 2 1 1 1 1 1 1]';
+for t = 0:dt:tf
+    i = i+1;
+    xx(:,i) = x;
+    xt = x;
+    for j = 1:4
+
+        z(1) = xd(1) - x(1);
+        z(2) = x(2) - dxd(1) - ( alpha(1)*z(1) );
+        z(3) = xd(3)-x(3);
+        z(4) = x(4) - dxd(3) - ( alpha(3)*x(3) );
+        z(5) = xd(5)-x(5);
+        z(6) = x(6) - dxd(5) - ( alpha(5)*x(5) );
+        z(7) = xd(7) - x(7);
+        z(8) = x(8) - ( alpha(7) * (xd(7)  - x(7) ) );
+        z(9) = xd(9)-x(9);
+        z(10) = x(10) - ( alpha(9)*( xd(9) - x(9) ) );
+        z(11) = xd(11) - x(11);
+        z(12) = x(12) - ( alpha(11)*( xd(11) - x(11) ) );
+
+        % disp(z)
+        U(1) = ( m / (cos(x(1)) * cos(x(3)) ) )* ...
+              ( z(7) + g - ( alpha(7)*( z(8) + ( alpha(7)*z(7) ) ) ) ...
+                              - ( alpha(8) * z(8) ) );
+
+        ux = ( m / U(1) ) * (z(9)- ( alpha(9) * ( z(10) - ( alpha(9)*z(9) ) ) )...
+             -( alpha(10)*z(10) ) );
+        uy = ( m / U(1) ) * (z(11)- ( alpha(11) * ( z(12) - ( alpha(11)*z(11) ) ) )...
+             -( alpha(12)*z(12) ) );
+
+        % ux = ( cos(x(1)) * sin(x(3)) * cos(x(5)) ) ...
+        %       + ( sin(x(1)) * sin(x(5)) );
+        % uy = ( cos(x(1)) * sin(x(3)) * sin(x(5)) ) ...
+        %      + ( sin(x(1)) * cos(x(5)) );
+
+        U(2) = ( z(1) - ( a(3)*x(4)*x(6) ) - ( a(2)*x(4)*omega ) ...
+                 - ( alpha(1)*( z(2)+( alpha(1)*z(1) ) ) ...
+                            - ( alpha(2)*z(2) ) ) ) / b(1);
+        U(3) = ( z(3) - ( a(3)*x(2)*x(6) ) - ( a(4)*x(2)*omega ) ...
+                 - ( alpha(3)*( z(4)+( alpha(3)*z(3) ) ) ...
+                            - ( alpha(4)*z(4) ) ) ) / b(2);
+        U(4) = ( z(5) - ( a(5)*x(2)*x(4) ) ...
+                 - ( alpha(5)*( z(6)+( alpha(5)*z(5) ) ) ...
+                            - ( alpha(6)*z(6) ) ) ) / b(3);
+
+        f = [x(2);
+             ( ( x(4)*x(6)*a(1) ) + ( x(4)*a(2)*omega ) + ( b(1)*U(2) ...
+                                                          ) );
+             x(4);
+             ( ( x(2)*x(6)*a(3) ) + ( x(2)*a(4)*omega ) + ( b(2)*U(3) ...
+                                                          ) );
+             x(6);
+             ( ( x(4)*x(2)*a(5) ) + ( b(3)*U(4) ) );
+             x(8);
+             ( (-g) + ( ( cos(x(1)) * cos(x(3) ) * U(1) / m ) ) );
+             x(10);
+             ( ux*U(1)/m ) ;
+             x(12);
+             ( uy*U(1)/m ) ];
+
+        d(:,j) = f * dt;
+        x = xt + d(:,j)*0.5;
+        if j == 3
+            x = xt + d(:,j);
+        end
+    end
+    x = xt + (d(:,1) + d(:,2)*2 + d(:,3)*2 + d(:,4))/6;
+end
+
+figure(1);
+grid on
+t = 0:dt:tf;
+subplot(2,2,1)
+plot(t,xx(1,:))
+subplot(2,2,2)
+plot(t,xx(3,:))
+subplot(2,2,3)
+plot(t,xx(5,:))
+
+figure(2);
+grid on
+t = 0:dt:tf;
+subplot(2,2,1)
+plot(t,xx(9,:))
+subplot(2,2,2)
+plot(t,xx(11,:))
+subplot(2,2,3)
+plot(t,xx(7,:))
+
+figure(3);
+scatter3(xx(9,:),xx(11,:),xx(7,:))
+az = 20;
+el = 20;
+view(az, el);

@@ -48,6 +48,7 @@ function wincmd()
 }
 alias cmd='winpty cmd'
 alias psh='winpty powershell'
+alias python='winpty python'
 alias ifconfig='wincmd ipconfig'
 alias netstat='wincmd netstat'
 alias netsh='wincmd netsh'
@@ -64,6 +65,7 @@ alias make='mingw32-make'
 alias m='make -j3'
 
 alias cscript='wincmd cscript'
+alias ipconfg='wincmd ifconfig'
 alias ping='wincmd ping'
 alias shutdown='wincmd shutdown'
 alias open='cygstart'
@@ -72,3 +74,7 @@ alias apm='apm.cmd'
 alias diff='colordiff'
 alias arduino='wincmd arduino'
 alias open='start'
+
+if [ $SHLVL = 1 ]; then
+  alias tmux='tmux attach || tmux new-session \; splitw -h \; selectp -t 1 \; splitw -v \; selectp -t 0'
+fi

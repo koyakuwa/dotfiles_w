@@ -1,0 +1,26 @@
+# 先週のAI一覧
+* シミュレーション結果出力プログラムの利用可能とする
+* PX4 のシミュテータ環境のバッテリーモデルの改善
+
+# シミュレーション結果の出力
+前回のミーティング資料で出力できなかったシミュレーション結果を
+出力できるようになったため、以下に結果をまとめる。
+
+まず、シミュレーション条件を述べる。
+この条件では、バッテリーが時間に対して線形に減少する。
+以下の式で記述されている。
+
+$vbatt = (battery~full~cell~voltage() - (discharge~v * ((now - batt~sim~start) / discharge~interval~us)))  * cellcount $$
+
+$$ discharge~interval~us = 60 \times 10 ^6$$
+図1と2に、シミュレーション結果のうち、電圧と充電率（以下、SOC）の時間履歴を示す。
+図1の電圧時間履歴を示す。
+
+![Time history of the voltage](img_voltage.png)
+
+![Time history of the SOC](img_soc.png)
+
+
+# 今週のAI計画
+* PX4 のシミュテータ環境のバッテリーモデルの改善
+* シミュレーション結果出力プログラムの利用可能とする
