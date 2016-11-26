@@ -1,8 +1,0 @@
-subplot(2,1,1), hold on
-set( gca, 'FontName','Arial','FontSize',9);
-plot(t/60, um, 'b', 'LineWidth', 0.5) % 推定値のプロット
-xlabel('Time [min]','FontName','Arial','FontSize',11), ylabel('Current [A]','FontName','Arial','FontSize',11)
-subplot(2,1,2), hold on
-set( gca, 'FontName','Arial','FontSize',9); 
-plot(t/60, ym, 'b', 'LineWidth', 0.5) % 推定値のプロット
-xlabel('Time [min]','FontName','Arial','FontSize',11), ylabel('Voltage [V]','FontName','Arial','FontSize',11)

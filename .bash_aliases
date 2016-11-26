@@ -74,6 +74,8 @@ alias apm='apm.cmd'
 alias diff='colordiff'
 alias arduino='wincmd arduino'
 alias open='start'
+alias py2='source /c/tools/Anaconda3/Scripts/activate py27'
+alias py3='source /c/tools/Anaconda3/Scripts/deactivate'
 
 if [ $SHLVL = 1 ]; then
   alias tmux='tmux attach || tmux new-session \; splitw -h \; selectp -t 1 \; splitw -v \; selectp -t 0'
