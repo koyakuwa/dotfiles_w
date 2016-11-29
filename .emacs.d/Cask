@@ -18,7 +18,8 @@
 ;; Appearance
 (depends-on "color-theme")
 ;;(depends-on "color-theme-tango")
-(depends-on "rainbow-delimiters")
+(depends-on "monokai-theme")
+
 
 ;; Config
 (depends-on "yasnippet")

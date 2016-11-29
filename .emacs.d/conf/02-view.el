@@ -35,11 +35,15 @@
 (scroll-bar-mode 0)
 
 ;; 表示・修飾に関する設定 ------------------------------
-(when (require 'color-theme nil t)
+(require 'monokai-theme)
+(load-theme 'monokai t)
+;;(when (require 'color-theme nil t)
   ;; テーマを読み込むための設定
-  (color-theme-initialize)
+  ;;(color-theme-initialize)
   ;; テーマをhoberに変更する
-  (color-theme-hober))
+;;(color-theme-hober))
+
+
 
 ;; 折り返ししない
 (setq-default truncate-partial-width-windows t)

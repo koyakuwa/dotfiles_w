@@ -16,8 +16,8 @@
 
 ;; ----- ido-work-directory-list -----
 (
- "c:/Users/koyak/dotfiles_w/.emacs.d/conf/"
  "c:/Users/koyak/.emacs.d/conf/"
+ "c:/Users/koyak/dotfiles_w/.emacs.d/conf/"
  "c:/Users/koyak/gdrive/write/aa0_motion_control/"
  "c:/Users/koyak/gdrive/write/done/group_seminar161025/"
  "c:/Users/koyak/gdrive/hack/aa0/"
@@ -35,33 +35,31 @@
 
 ;; ----- ido-work-file-list -----
 (
+ "02-view.el"
+ "24-matlab.el"
  "05-hooks.el"
  "04-util.el"
  "03-keybind.el"
- "02-view.el"
  "01-config.el"
  "memo_4.tex"
  "tex2pdf.sh"
  "memo_3.tex"
  "sum.tex"
- "anime.m"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("c:/Users/koyak/dotfiles_w/.emacs.d/conf/" (22585 12306 0 0) "30-scss.el" "24-matlab.el" "23-ruby.el" "22-objc.el" "21-js.el" "12-coffee.el" "08-markdown.el" "07-ag.el" "06-auto-complete.el" "05-hooks.el" "04-util.el" "03-keybind.el" "02-view.el" "01-config.el" ".#02-view.el" ".#01-config.el" "../" "./")
+ ("c:/Users/koyak/.emacs.d/conf/" (22589 19196 0 0) "30-scss.el" "24-matlab.el" "23-ruby.el" "22-objc.el" "21-js.el" "12-coffee.el" "08-markdown.el" "07-ag.el" "06-auto-complete.el" "05-hooks.el" "04-util.el" "03-keybind.el" "02-view.el" "01-config.el" "../" "./")
 
- ("c:/Users/koyak/.emacs.d/conf/" (22574 54682 0 0) "30-scss.el" "24-matlab.el" "23-ruby.el" "22-objc.el" "21-js.el" "12-coffee.el" "08-markdown.el" "07-ag.el" "06-auto-complete.el" "05-hooks.el" "04-util.el" "03-keybind.el" "02-view.el" "01-config.el" "../" "./")
+ ("c:/Users/koyak/.emacs.d/" (22589 19198 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".cask/" "../" "./")
 
- ("c:/Users/koyak/.emacs.d/" (22585 11408 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".cask/" "../" "./")
+ ("c:/Users/koyak/dotfiles_w/.emacs.d/" (22589 19115 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".cask/" "../" "./")
+
+ ("c:/Users/koyak/dotfiles_w/.emacs.d/conf/" (22589 18651 0 0) "30-scss.el" "24-matlab.el" "23-ruby.el" "22-objc.el" "21-js.el" "12-coffee.el" "08-markdown.el" "07-ag.el" "06-auto-complete.el" "05-hooks.el" "04-util.el" "03-keybind.el" "02-view.el" "01-config.el" "../" "./")
 
  ("c:/Users/koyak/" (22585 7404 0 0) "スタート メニュー/" "VirtualBox VMs/" "Videos/" "Vagrantfile~" "Vagrantfile" "vagrant/" "Tracing/" "templogfile" "Templates/" "SendTo/" "Searches/" "Saved Games/" "Roaming/" "Recent/" "PrintHood/" "Pictures/" "packages.config" "OneDrive/" "ntuser.ini" "NTUSER.DAT{a5cdd7ec-a236-11e6-a149-a18ef7359427}.TMContainer00000000000000000002.regtrans-ms" "NTUSER.DAT{a5cdd7ec-a236-11e6-a149-a18ef7359427}.TMContainer00000000000000000001.regtrans-ms" "NTUSER.DAT{a5cdd7ec-a236-11e6-a149-a18ef7359427}.TM.blf" "ntuser.dat.LOG2" "ntuser.dat.LOG1" "NTUSER.DAT" "NetHood/" "My Documents/" "Music/" "mplayer/" "Local Settings/" "Links/" "kobito-v2.0.2/" "IntelGraphicsProfiles/" "gsview32.ini" "gdrive/" "Favorites/" "Evernote/" "Downloads/" "dotfiles_w/" "Documents/" "Desktop/" "Creative Cloud Files/" "Cookies/" "Contacts/" "cask/" "busybox.exe" "ardupilot/" "Application Data/" "AppData/" ".VirtualBox/" ".viminfo" ".vagrant.d/" ".vagrant/" ".tmux.conf" ".subversion/" ".ssh/" ".QtWebEngineProcess/" ".python_history" ".platformio/" ".oracle_jre_usage/" ".minttyrc" ".Mendeley Desktop/" ".matplotlib/" ".jssc/" ".gnuplot_history" ".gnupg/" ".gitconfig" ".emacs.d/" ".cache/" ".bash_profile" ".bash_history" ".bash_functions" ".bash_aliases" ".bashrc~" ".bashrc" ".atom/" ".ash_history" "#.bash_profile#" "#.bashrc#" "../" "./")
 
- ("c:/Users/koyak/dotfiles_w/.emacs.d/" (22582 41204 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".cask/" "../" "./")
-
  ("c:/Users/koyak/gdrive/hack/aa0/" (22582 38235 0 0) "Seminar_Nagamatsu_20161101_rev1.zip" "Seminar_Nagamatsu_20161101_rev1/" "logmov.m" "ex2.m" "ex1.m" "anime.m" "../" "./")
-
- ("c:/Users/koyak/gdrive/write/aa0_motion_control/" (22583 53925 0 0) "zippdf.sh" "xyz.jpg" "tex2pdf.sh" "super.png" "sup.png" "sum.tex" "sum.pdf" "sum.nlo" "sum.log" "sum.dvi" "sum.blg" "sum.bbl" "sum.aux" "sisei.png" "sisei.jpg" "replace.py" "path.png" "path.jpg" "path.eps" "memo_4.tex" "memo_3.tex" "memo_2.tex" "memo_1.tex" "memo.tex" "memo.md" "md2pdf.sh" "ichi.png" "group_seminar161025.pdf" "gain.png" "debug.log" "../" "./")
 
  ("c:/Users/koyak/gdrive/write/done/group_seminar161025/" (22556 24518 0 0) "zippdf.sh" "usage_percetage.png" "tex2pdf.sh" "table1.tex" "sum.tex" "sum.pdf" "sum.nlo" "sum.log" "sum.dvi" "sum.blg" "sum.bbl" "sum.aux" "state_estimation.png" "SOC_by_EKF.eps" "SOC_by_CC.eps" "simultaneous_estimation.png" "seiritu.png" "replace.py" "range_ev.png" "plate.png" "model_based_est.png" "memo_2.tex" "memo_2.md" "memo_1.tex" "memo.tex" "memo.md" "md2pdf.sh" "li-ion.png" "io-data+SOC.eps" "foster1.png" "foster.png" "ev_io.png" "eq.png" "debug.log" "bat_funda.png" "bat_cell.png" "battery_state_est.png" "161025simul_soc_log.eps" "161023input.jpg" "161022simul_param_log.eps" "160613simul_soc_logar.eps" "160613simul_soc_log.eps" "160613simul_soc.eps" "160613simul_param_log.eps" "160613simul_param.eps" "../" "./")
 
