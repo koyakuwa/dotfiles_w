@@ -13,5 +13,5 @@ tramp
 .org-id-locations
 *_archive
 
-ac-comphist.dat
+/.emacs.d/ac-comphist.dat
 /.emacs.d/backup
