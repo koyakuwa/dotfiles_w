@@ -1,5 +1,0 @@
-unbind C-b
-set -g prefix C-t
-bind C-t send-prefix
-set-option -g base-index 0
-bind C-r source-file ~/.tmux.cof \; display "reload: ~/.tmux.conf"

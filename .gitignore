@@ -1,0 +1,17 @@
+### https://raw.github.com/github/gitignore/0aeefb48c0ac885a516fb92f7f5bfd7e85ce7a37/Global/Emacs.gitignore
+
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Org-mode
+.org-id-locations
+*_archive
+
+ac-comphist.dat
+/.emacs.d/backup
