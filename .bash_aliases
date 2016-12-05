@@ -80,3 +80,8 @@ alias kobito='kobito &'
 if [ $SHLVL = 1 ]; then
   alias tmux='tmux attach || tmux new-session \; splitw -h \; selectp -t 1 \; splitw -v \; selectp -t 0'
 fi
+
+function Emacs() {
+    EMACS='emacs'
+    $EMACS $@ &
+}

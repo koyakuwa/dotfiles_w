@@ -37,8 +37,9 @@
 
 ;; ----- ido-work-file-list -----
 (
- "ex_batt.m"
+ "irtl.m"
  "batterymodel_foster.m"
+ "ex_batt.m"
  ".bash_aliases"
  "02-view.el"
  "24-matlab.el"
@@ -46,12 +47,13 @@
  "04-util.el"
  "03-keybind.el"
  "01-config.el"
- "memo_4.tex"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("c:/Users/koyak/work-dir/koyakuwa/aa0/" (22592 21788 0 0) "SOC2OCV.m" "OCV2SOC.m" "numdiff.m" "logmov.m" "ex_batt.m" "ex2.m" "ex1.m" "batterymodel_foster.m" "anime.m" ".git/" "../" "./")
+ ("c:/Users/koyak/dotfiles_w/.emacs.d/" (22592 24398 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".cask/" "../" "./")
+
+ ("c:/Users/koyak/work-dir/koyakuwa/aa0/" (22592 48441 0 0) "SOC2OCV.m" "OCV2SOC.m" "numdiff.m" "logmov.m" "ex_batt.m" "ex2.m" "ex1.m" "batterymodel_foster.m" "anime.m" ".git/" "../" "./")
 
  ("c:/Users/koyak/gdrive/hack/bme/m_box/" (22589 4200 0 0) "soc_simul.c~" "soc.bak" "plot_SOC.m~" "numdiff.prj" "mchol.cpp" "ex_batt_stat.m" "ex_batt_simul.m" "ekf.prj" "../" "./")
 
@@ -72,8 +74,6 @@
  ("c:/Users/koyak/work-dir/koyakuwa/" (22589 2551 0 0) "aa0/" "../" "./")
 
  ("c:/Users/koyak/dotfiles_w/.emacs.d/conf/" (22589 19300 0 0) "30-scss.el" "24-matlab.el" "23-ruby.el" "22-objc.el" "21-js.el" "12-coffee.el" "08-markdown.el" "07-ag.el" "06-auto-complete.el" "05-hooks.el" "04-util.el" "03-keybind.el" "02-view.el" "01-config.el" "../" "./")
-
- ("c:/Users/koyak/dotfiles_w/.emacs.d/" (22589 19327 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".cask/" "../" "./")
 
  ("c:/Users/koyak/dotfiles_w/" (22588 20261 0 0) "dotfilesLink.sh" ".git/" ".emacs.d/" ".bash_profile" ".bash_functions" ".bash_aliases" "../" "./")
 
