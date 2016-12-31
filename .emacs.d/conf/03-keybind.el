@@ -1,7 +1,7 @@
 ;;; キーバインドの設定
 
 ;; "C-t" でウィンドウを切り替える
-(define-key global-map (kbd "C-t") 'other-window)
+;;(define-key global-map (kbd "C-t") 'other-window)
 
 ;; "C-h" でバックスペース
 (global-set-key "\C-h" 'delete-backward-char)
