@@ -78,6 +78,7 @@ alias py2='source /c/tools/Anaconda3/Scripts/activate py27'
 alias py3='source /c/tools/Anaconda3/Scripts/deactivate'
 alias kobito='kobito &'
 alias keyhac='start ~/keyhac_176/keyhac/keyhac.exe'
+alias gnuplot='winpty gnuplot'
 if [ $SHLVL = 1 ]; then
   alias tmux='tmux attach || tmux new-session \; splitw -h \; selectp -t 1 \; splitw -v \; selectp -t 0'
 fi

@@ -14,12 +14,18 @@
 (depends-on "ag")
 (depends-on "wgrep")
 (depends-on "wgrep-ag")
+(depends-on "undo-tree")
+(depends-on "magit")
+(depends-on "dash")
+(depends-on "popup")
 
 ;; Appearance
 (depends-on "color-theme")
 ;;(depends-on "color-theme-tango")
 (depends-on "monokai-theme")
-
+(depends-on "zenburn-theme")
+(depends-on "atom-one-dark-theme")
+(depends-on "molokai-theme")
 
 ;; Config
 (depends-on "yasnippet")

@@ -37,13 +37,10 @@
 ;; 表示・修飾に関する設定 ------------------------------
 (require 'monokai-theme)
 (load-theme 'monokai t)
-;;(when (require 'color-theme nil t)
-  ;; テーマを読み込むための設定
-  ;;(color-theme-initialize)
-  ;; テーマをhoberに変更する
-;;(color-theme-hober))
-
-
+;(require 'atom-one-dark-theme)
+;(load-theme 'atom-one-dark t)
+;(require 'molokai-theme)
+;(load-theme 'molokai t)
 
 ;; 折り返ししない
 (setq-default truncate-partial-width-windows t)
