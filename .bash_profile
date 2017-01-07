@@ -34,3 +34,8 @@ fi
 # Set INFOPATH so it includes users' private info if it exists
 # if [ -d "${HOME}/info" ]; then
 #   INFOPATH="${HOME}/info:${INFOPATH}"
+
+set MSYS2_PATH_TYPE=inherit
+export PATH=$PATH:/mingw64/bin
+export PATH="$HOME/cask/bin:$PATH"
+export PATH="$HOME/kobito-v2.0.2/dist/kobito-win32-ia32:$PATH"

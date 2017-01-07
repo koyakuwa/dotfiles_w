@@ -18,6 +18,8 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "c:/Users/koyak/"
+ "c:/Users/koyak/dotfiles_w/"
  "c:/Users/koyak/dotfiles_w/.emacs.d/conf/"
  "c:/Users/koyak/dotfiles_w/.emacs.d/"
  "c:/Users/koyak/.emacs.d/"
@@ -32,7 +34,6 @@
  "c:/Users/koyak/gdrive/write/meeting/22/"
  "c:/Users/koyak/gdrive/hack/AMEID_tometai/"
  "c:/Users/koyak/gdrive/write/meeting/27/"
- "c:/Users/koyak/"
  "c:/Users/koyak/gdrive/write/aa0_motion_control/"
  "c:/Users/koyak/gdrive/write/done/group_seminar161025/"
  "c:/Users/koyak/gdrive/hack/aa0/"
@@ -44,6 +45,9 @@
 
 ;; ----- ido-work-file-list -----
 (
+ ".bashrc"
+ ".bash_functions"
+ ".bash_aliases"
  "02-view.el"
  "Cask"
  "rtl4x.m"
@@ -51,16 +55,13 @@
  "memo.md"
  "moveimage.sh"
  "many.m"
- "soc_simul_logarx2.bak5"
- "soc_simul_logarx2.bak2"
- "soc_simul_logarx2.m"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("c:/Users/koyak/dotfiles_w/.emacs.d/conf/" (22639 22427 0 0) "30-scss.el" "24-matlab.el" "23-ruby.el" "22-objc.el" "21-js.el" "12-coffee.el" "09-multicursor.el" "08-markdown.el" "07-ag.el" "06-auto-complete.el" "05-hooks.el" "04-util.el" "03-keybind.el" "02-view.el" "01-config.el" "../" "./")
+ ("c:/Users/koyak/dotfiles_w/.emacs.d/" (22639 22734 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".mc-lists.el" ".cask/" "../" "./")
 
- ("c:/Users/koyak/dotfiles_w/.emacs.d/" (22639 22608 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".mc-lists.el" ".cask/" "../" "./")
+ ("c:/Users/koyak/dotfiles_w/.emacs.d/conf/" (22639 22699 0 0) "30-scss.el" "24-matlab.el" "23-ruby.el" "22-objc.el" "21-js.el" "12-coffee.el" "09-multicursor.el" "08-markdown.el" "07-ag.el" "06-auto-complete.el" "05-hooks.el" "04-util.el" "03-keybind.el" "02-view.el" "01-config.el" "../" "./")
 
  ("c:/Users/koyak/gdrive/hack/bme/" (22637 59575 0 0) "ut.m" "ukf.m" "sslx2_manyx.m" "soc_statex.m" "soc_state.m" "soc_simul_logarx2.m" "soc_simul_logarx2.bak5" "soc_simul_logarx2.bak4" "soc_simul_logarx2.bak3" "soc_simul_logarx2.bak2" "soc_simul_logarx2.bak" "soc_simul_logarx.m" "soc_simul_logar.m" "soc_simulx.m" "soc_simul.m" "soc_simul.bak" "soc_ccx.m" "SOC2OCV.m" "README.md" "plot_socxx2.m" "plot_socxx.m" "plot_socx2.m" "plot_socx.m" "plot_SOC.m" "plot_param_logx.m" "plot_param_log.m" "plot_paramx.m" "plot_param.m" "plot_input.m" "OCV2SOC.m" "numdiff.m" "no38.m" "m_box/" "moveimage.sh" "manyx.m" "many.m" "make_soc_ocv.m" "imany.m" "image/" "gra_soc_simul.m" "func_soc_simul_logax.m" "ex_batt.m" "ekf.m" "data_o/" "data_i/" "c_box/" "c2d_rk4.m" "c2d_euler.m" "batterymodel_foster_log.m" "batterymodel_foster.m" "../" "./")
 
@@ -69,8 +70,6 @@
  ("c:/Users/koyak/.emacs.d/conf/" (22639 22267 0 0) "30-scss.el" "24-matlab.el" "23-ruby.el" "22-objc.el" "21-js.el" "12-coffee.el" "09-multicursor.el" "08-markdown.el" "07-ag.el" "06-auto-complete.el" "05-hooks.el" "04-util.el" "03-keybind.el" "02-view.el" "01-config.el" "../" "./")
 
  ("c:/Users/koyak/work-dir/koyakuwa/aa0/" (22639 21005 0 0) "SOC2OCV.m" "santa3.m" "santa2.m" "santa1.m" "rtl4x.m" "rtl3x.m" "rtl3.m" "rtl2x.m" "rtl2.m" "rtl1x.m" "rtl1.m" "plot_irtl.m" "plot_hikaku.m" "OCV2SOC.m" "numdiff.m" "moveimage.sh" "makemovie_path.m" "makemovie.m" "logmov2.m" "logmov.m" "hikaku_santa.m" "hikaku_i.m" "hikakux.m" "hikaku.m" "ex_batt.m" "ex1.m" "batterymodel_foster.m" "anime.m" ".git/" "../" "./")
-
- ("c:/Users/koyak/.emacs.d/" (22639 22271 0 0) "srecode-map.el" "snippets/" "kkcrc" "init.el~" "init.el" "ido.last" "etc/" "eshell/" "elpa/" "conf/" "Cask" "backup/" "auto-save-list/" "ac-comphist.dat" ".mc-lists.el" ".cask/" "../" "./")
 
  ("c:/Users/koyak/" (22639 20833 0 0) "スタート メニュー/" "work-dir/" "VirtualBox VMs/" "Videos/" "Vagrantfile~" "Vagrantfile" "vagrant/" "Tracing/" "templogfile" "Templates/" "SendTo/" "Searches/" "Saved Games/" "Roaming/" "Recent/" "PrintHood/" "Pictures/" "packages.config" "OneDrive/" "ntuser.ini" "NTUSER.DAT{a5cdd7ec-a236-11e6-a149-a18ef7359427}.TMContainer00000000000000000002.regtrans-ms" "NTUSER.DAT{a5cdd7ec-a236-11e6-a149-a18ef7359427}.TMContainer00000000000000000001.regtrans-ms" "NTUSER.DAT{a5cdd7ec-a236-11e6-a149-a18ef7359427}.TM.blf" "ntuser.dat.LOG2" "ntuser.dat.LOG1" "NTUSER.DAT" "note/" "NetHood/" "My Documents/" "Music/" "mplayer/" "makedataforbme.c" "Local Settings/" "Links/" "kobito-v2.0.2/" "keyhac_176/" "IntelGraphicsProfiles/" "gsview32.ini" "gdrive/" "Favorites/" "Evernote/" "emacs/" "Downloads/" "dotfiles_w/" "Documents/" "Desktop/" "Creative Cloud Files/" "Cookies/" "Contacts/" "cask/" "busybox.exe" "ardupilot/" "Application Data/" "AppData/" "a.exe" ".vscode/" ".VirtualBox/" ".viminfo" ".vagrant.d/" ".vagrant/" ".tmux.conf" ".subversion/" ".ssh/" ".QtWebEngineProcess/" ".python_history" ".platformio/" ".oracle_jre_usage/" ".minttyrc" ".Mendeley Desktop/" ".matplotlib/" ".jssc/" ".gnuplot_history" ".gnupg/" ".gitconfig" ".geeknote/" ".emacs.d/" ".conda/" ".cache/" ".bash_profile" ".bash_history" ".bash_functions" ".bash_aliases" ".bashrc~" ".bashrc" ".atom/" ".ash_history" "#.bash_profile#" "#.bashrc#" "../" "./")
 
