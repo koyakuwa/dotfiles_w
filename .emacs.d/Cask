@@ -24,6 +24,7 @@
 ;;(depends-on "color-theme-tango")
 (depends-on "monokai-theme")
 (depends-on "zenburn-theme")
+(depends-on "darkburn-theme")
 (depends-on "atom-one-dark-theme")
 (depends-on "molokai-theme")
 

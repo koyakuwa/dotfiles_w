@@ -35,12 +35,14 @@
 (scroll-bar-mode 0)
 
 ;; 表示・修飾に関する設定 ------------------------------
-(require 'monokai-theme)
-(load-theme 'monokai t)
+;(require 'monokai-theme)
+;(load-theme 'monokai t)
 ;(require 'atom-one-dark-theme)
 ;(load-theme 'atom-one-dark t)
 ;(require 'molokai-theme)
 ;(load-theme 'molokai t)
+(require 'zenburn-theme)
+(load-theme 'zenburn t)
 
 ;; 折り返ししない
 (setq-default truncate-partial-width-windows t)
