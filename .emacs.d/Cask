@@ -67,3 +67,6 @@
 
 ;; matlab
 (depends-on "matlab-mode")
+
+;;yatex
+(depends-on "yatex")

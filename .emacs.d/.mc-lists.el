@@ -8,6 +8,8 @@
 
 (setq mc/cmds-to-run-once
       '(
+        YaTeX-insert-parens
+        ignore
         markdown-exdent-or-delete
         mouse-buffer-menu
         mouse-set-region
