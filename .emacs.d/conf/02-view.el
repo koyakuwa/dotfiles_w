@@ -41,8 +41,8 @@
 ;(load-theme 'atom-one-dark t)
 ;(require 'molokai-theme)
 ;(load-theme 'molokai t)
-(require 'zenburn-theme)
-(load-theme 'zenburn t)
+(require 'hc-zenburn-theme)
+(load-theme 'hc-zenburn t)
 
 ;; 折り返ししない
 (setq-default truncate-partial-width-windows t)
@@ -51,16 +51,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 編集行を目立たせる（現在行をハイライト表示する）
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(defface hlline-face
-  '((((class color)
-      (background dark))
-     (:background "dark slate gray"))
-    (((class color)
-      (background light))
-     (:background "ForestGreen"))
-    (t
-     ()))
-  "*Face used by hl-line.")
-(setq hl-line-face 'hlline-face)
-(setq hl-line-face 'underline) ; 下線
-(global-hl-line-mode)
+;(defface hlline-face
+;  '((((class color)
+;      (background dark))
+;     (:background "dark slate gray"))
+;    (((class color)
+;      (background light))
+;     (:background "ForestGreen"))
+;    (t
+;     ()))
+;  "*Face used by hl-line.")
+;(setq hl-line-face 'hlline-face)
+;(global-hl-line-mode)

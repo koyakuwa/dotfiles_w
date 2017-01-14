@@ -27,6 +27,7 @@
 (depends-on "darkburn-theme")
 (depends-on "atom-one-dark-theme")
 (depends-on "molokai-theme")
+(depends-on "hc-zenburn-theme")
 
 ;; Config
 (depends-on "yasnippet")
