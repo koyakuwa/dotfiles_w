@@ -1,7 +1,15 @@
 ;;
+;; latex-math-preview
+;;
+(autoload 'latex-math-preview-expression "latex-math-preview" nil t)
+(autoload 'latex-math-preview-insert-symbol "latex-math-preview" nil t)
+(autoload 'latex-math-preview-save-image-file "latex-math-preview" nil t)
+(autoload 'latex-math-preview-beamer-frame "latex-math-preview" nil t)
+;;
 ;; YaTeX
 ;;
 (autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+;(setq YaTeX-prefix "\C-c")
 (setq auto-mode-alist
       (append '(("\\.tex$" . yatex-mode)
                 ("\\.ltx$" . yatex-mode)
@@ -29,7 +37,8 @@
 ;(setq tex-command "latexmk -e \"$pdflatex=q/lualatex %O -synctex=1 %S/\" -e \"$bibtex=q/upbibtex %O %B/\" -e \"$biber=q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/\" -e \"$makeindex=q/upmendex %O -o %D %S/\" -norc -gg -pdf")
 ;(setq tex-command "latexmk -e \"$pdflatex=q/luajitlatex %O -synctex=1 %S/\" -e \"$bibtex=q/upbibtex %O %B/\" -e \"$biber=q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/\" -e \"$makeindex=q/upmendex %O -o %D %S/\" -norc -gg -pdf")
 ;(setq tex-command "latexmk -e \"$pdflatex=q/xelatex %O -synctex=1 %S/\" -e \"$bibtex=q/upbibtex %O %B/\" -e \"$biber=q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/\" -e \"$makeindex=q/upmendex %O -o %D %S/\" -norc -gg -pdf")
-(setq bibtex-command "latexmk -e \"$latex=q/uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 %S/\" -e \"$bibtex=q/upbibtex %O %B/\" -e \"$biber=q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/\" -e \"$makeindex=q/upmendex %O -o %D %S/\" -e \"$dvipdf=q/dvipdfmx %O -o %D %S/\" -norc -gg -pdfdvi")
+;(setq bibtex-command "latexmk -e \"$latex=q/uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 %S/\" -e \"$bibtex=q/upbibtex %O %B/\" -e \"$biber=q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/\" -e \"$makeindex=q/upmendex %O -o %D %S/\" -e \"$dvipdf=q/dvipdfmx %O -o %D %S/\" -norc -gg -pdfdvi")
+(setq bibtex-command "upbibtex -kanji=utf8")
 (setq makeindex-command "latexmk -e \"$latex=q/uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 %S/\" -e \"$bibtex=q/upbibtex %O %B/\" -e \"$biber=q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/\" -e \"$makeindex=q/upmendex %O -o %D %S/\" -e \"$dvipdf=q/dvipdfmx %O -o %D %S/\" -norc -gg -pdfdvi")
 (setq dvi2-command "rundll32 shell32,ShellExec_RunDLL SumatraPDF -reuse-instance")
 ;(setq dvi2-command "texworks")
@@ -58,16 +67,24 @@
                           (count-lines (point-min) (point))))))))
 (add-hook 'yatex-mode-hook
           '(lambda ()
-             (define-key YaTeX-mode-map (kbd "C-c s") 'sumatrapdf-forward-search)))
+             (Yatex-define-key YaTeX-mode-map (kbd "C-c s") 'sumatrapdf-forward-search)))
 (add-hook 'yatex-mode-hook
           '(lambda ()
              (auto-fill-mode -1)))
 ;;
 ;; RefTeX with YaTeX
 ;;
-;(add-hook 'yatex-mode-hook 'turn-on-reftex)
+(add-hook 'yatex-mode-hook 'turn-on-reftex)
 (add-hook 'yatex-mode-hook
           '(lambda ()
              (reftex-mode 1)
-             (define-key reftex-mode-map (concat YaTeX-prefix ">") 'YaTeX-comment-region)
-             (define-key reftex-mode-map (concat YaTeX-prefix "<") 'YaTeX-uncomment-region)))
+             (Yatex-define-key reftex-mode-map (concat YaTeX-prefix ">") 'YaTeX-comment-region)
+             (Yatex-define-key reftex-mode-map (concat YaTeX-prefix "<") 'YaTeX-uncomment-region)))
+(add-hook 'yatex-mode-hook
+         '(lambda ()
+         (Yatex-define-key "p" 'latex-math-preview-expression)
+         (Yatex-define-key "\C-p" 'latex-math-preview-save-image-file)
+         (Yatex-define-key "j" 'latex-math-preview-insert-symbol)
+         (Yatex-define-key "\C-j" 'latex-math-preview-last-symbol-again)
+         (Yatex-define-key "\C-b" 'latex-math-preview-beamer-frame)))
+(setq latex-math-preview-in-math-mode-p-func 'YaTeX-in-math-mode-p)

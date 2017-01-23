@@ -4,7 +4,7 @@
 ;;(define-key global-map (kbd "C-t") 'other-window)
 
 ;; "C-h" でバックスペース
-(global-set-key "\C-h" 'delete-backward-char)
+;(global-set-key "\C-h" 'delete-backward-char)
 
 ;; "C-m" にnewline-and-indentを割り当てる
 (define-key global-map (kbd "C-m") 'newline-and-indent)
