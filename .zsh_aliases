@@ -1,5 +1,5 @@
 # .bash_aliasesの中身
-echo '.bash_aliases'
+echo '.zsh_aliases'
 
 # Aliases for MSYS2 bash
 # alias hogeを一時的に無効にするには\hoge

@@ -71,3 +71,6 @@
 ;;yatex
 (depends-on "yatex")
 (depends-on "latex-math-preview")
+
+;;Python
+(depends-on "jedi")

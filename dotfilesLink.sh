@@ -1,5 +1,7 @@
 #!/bin/sh
-ln -sf ~/dotfiles_w/.bash_aliases ~/.bash_aliases
-ln -sf ~/dotfiles_w/.bash_functions ~/.bash_functions
-ln -sf ~/dotfiles_w/.bash_profile ~/.bash_profile
+ln -sf ~/dotfiles_w/.zsh_aliases ~/.zsh_aliases
+ln -sf ~/dotfiles_w/.zsh_functions ~/.zsh_functions
+ln -sf ~/dotfiles_w/.zprofile ~/.zprofile
+ln -sf ~/dotfiles_w/.zshrc ~/.zshrc
 ln -sf ~/dotfiles_w/.emacs.d ~/.emacs.d
+ln -sf ~/dotfiles_w/.spacemacs ~/.spacemacs

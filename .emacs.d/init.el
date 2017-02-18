@@ -17,3 +17,8 @@
 
 (global-set-key [M-kanji] 'ignore)
 (global-set-key [kanji] 'ignore)
+
+(set-face-attribute 'default nil :family "Myrica M" :height 110)
+;(set-face-attribute 'default nil :family "Consolas" :height 104)
+;(set-fontset-font nil 'japanese-jisx0208 (font-spec :family "MeiryoKe_Console"))
+;(setq face-font-rescale-alist '(("MeiryoKe_Console" . 1.08)))
