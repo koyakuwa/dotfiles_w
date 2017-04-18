@@ -80,9 +80,9 @@ alias kobito='kobito &'
 alias keyhac='start ~/keyhac_176/keyhac/keyhac.exe'
 alias gnuplot='winpty gnuplot'
 alias wsl='~/wslbridge/out/wslbridge.exe'
-if [ $SHLVL = 1 ]; then
-  alias tmux='tmux attach || tmux new-session \; splitw -h \; selectp -t 1 \; splitw -v \; selectp -t 0'
-fi
+# if [ $SHLVL = 1 ]; then
+#   alias tmux='tmux attach || tmux new-session \; splitw -h \; selectp -t 1 \; splitw -v \; selectp -t 0'
+# fi
 
 function Emacs() {
     EMACS='emacs'
