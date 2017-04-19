@@ -1,4 +1,4 @@
-# source the users zshrc if it exists
+# zsh﻿
 if [ -f "${HOME}/.zsh_aliases" ] ; then
   source "${HOME}/.zsh_aliases"
 fi
@@ -162,21 +162,35 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
-
-
-########################################
-# OS 別の設定
-case ${OSTYPE} in
-    darwin*)
-        #Mac用の設定
-        export CLICOLOR=1
-        alias ls='ls -G -F'
-        ;;
-    linux*)
-        #Linux用の設定
-        alias ls='ls -F --color=auto'
-        ;;
-esac
-
-# vim:set ft=zsh:
 export DISPLAY=localhost:0.0
+
+# zplug setting
+# Check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+    source ~/.zplug/init.zsh && zplug update --self
+fi
+
+# Essential
+source ~/.zplug/init.zsh
+
+# Make sure to use double quotes to prevent shell expansion
+zplug "zsh-users/zsh-syntax-highlighting"
+
+# Additional completion definitions for Zsh
+zplug "zsh-users/zsh-completions"
+
+# This plugin adds many useful aliases and functions.
+zplug "plugins/git",   from:oh-my-zsh
+
+# Install packages that have not been installed yet
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    else
+        echo
+    fi
+fi
+
+zplug load
