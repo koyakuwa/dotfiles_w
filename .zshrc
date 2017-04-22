@@ -179,18 +179,15 @@ zplug "zsh-users/zsh-syntax-highlighting"
 
 # Additional completion definitions for Zsh
 zplug "zsh-users/zsh-completions"
+zplug "plugins/git", from:oh-my-zsh
 
-# This plugin adds many useful aliases and functions.
-zplug "plugins/git",   from:oh-my-zsh
-
-# Install packages that have not been installed yet
+# Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
-    else
-        echo
     fi
 fi
 
-zplug load
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
