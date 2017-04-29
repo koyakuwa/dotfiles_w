@@ -79,7 +79,11 @@ alias py3='source /c/tools/Anaconda3/Scripts/deactivate'
 alias kobito='kobito &'
 alias keyhac='start ~/keyhac_176/keyhac/keyhac.exe'
 alias gnuplot='winpty gnuplot'
+alias geeknote='winpty geeknote'
 alias wsl='~/wslbridge/out/wslbridge.exe'
+alias vi='vim'
+alias todoist='todoist --color'
+alias emacsclient='~/emacs/bin/emacsclient'
 # if [ $SHLVL = 1 ]; then
 #   alias tmux='tmux attach || tmux new-session \; splitw -h \; selectp -t 1 \; splitw -v \; selectp -t 0'
 # fi
