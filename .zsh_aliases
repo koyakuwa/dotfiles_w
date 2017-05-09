@@ -82,8 +82,8 @@ alias gnuplot='winpty gnuplot'
 alias geeknote='winpty geeknote'
 alias wsl='~/wslbridge/out/wslbridge.exe'
 alias vi='vim'
-alias todoist='todoist --color'
-alias emacsclient='~/emacs/bin/emacsclient'
+alias td='todoist --color'
+alias e='~/emacs/bin/emacsclient -n'
 # if [ $SHLVL = 1 ]; then
 #   alias tmux='tmux attach || tmux new-session \; splitw -h \; selectp -t 1 \; splitw -v \; selectp -t 0'
 # fi
