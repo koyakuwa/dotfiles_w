@@ -180,6 +180,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 # Additional completion definitions for Zsh
 zplug "zsh-users/zsh-completions"
 zplug "plugins/git", from:oh-my-zsh
+zplug "s7anley/zsh-geeknote"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then

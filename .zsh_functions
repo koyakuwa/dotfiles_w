@@ -24,6 +24,31 @@ function matrix()
     echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) ;sleep 0.05; done|gawk '{ letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
 }
 
+# peco 用のラッパー
+function _pecowrap_exec() {
+  eval "$@" > /tmp/cmd.log
+  script -e -qc "winpty peco /tmp/cmd.log" /tmp/script.log
+}
+
+function _pecowrap_result() {
+  local result="$(col -bx < /tmp/script.log | tr -d '\n' | sed 's/.*0m\(.*\)0K.*$/\1/g' | sed 's/0K//g')"
+  echo "${result}"
+}
+
+function c() {
+  local peco_dir=$1
+  if [ ! -d $peco_dir ]; then
+    echo "${peco_dir} is not directory!"
+    return
+  fi
+  if [ "${peco_dir:${#peco_dir}-1:1}" != "/" ]; then
+    peco_dir="${peco_dir}/"
+  fi
+  _pecowrap_exec "find ${peco_dir} -maxdepth 1 -type d | sort" || return
+  cd $(_pecowrap_result)
+}
+
+# ペコのスクリプト
 peco-src() {
     local selected
     selected="$(ghq list --full-path | peco --query="$LBUFFER")"

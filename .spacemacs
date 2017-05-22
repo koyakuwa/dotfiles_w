@@ -57,7 +57,9 @@ values."
      go
      extra-langs
      evernote
-     latex
+     (latex :variables
+            latex-enable-auto-fill t)
+
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -144,7 +146,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Myrica M"
-                               :size 13
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -316,13 +318,17 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
-layers configuration.
+layer
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (global-set-key (kbd "C-;") 'evil-escape)
   (setq markdown-open-command "vmd")
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+  (setq TeX-view-program-list '(("DVIviewer" "/path/viewer %o")
+                                ("PDFviewer" "/path/viewer %o")))
+  (setq TeX-view-program-selection '((output-dvi "DVIviewer")
+                                     (output-pdf "PDFviewer")))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
