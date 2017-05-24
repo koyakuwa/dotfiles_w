@@ -5,3 +5,4 @@ ln -sf ~/src/github.com/koyakuwa/dotfiles_w/.zprofile ~/.zprofile
 ln -sf ~/src/github.com/koyakuwa/dotfiles_w/.zshrc ~/.zshrc
 ln -sf ~/src/github.com/koyakuwa/dotfiles_w/.tmux.conf ~/.tmux.conf
 ln -sf ~/src/github.com/koyakuwa/dotfiles_w/.spacemacs ~/.spacemacs
+ln -sf ~/src/github.com/koyakuwa/dotfiles_w/.minttyrc ~/.minttyrc
