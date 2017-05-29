@@ -1,15 +1,3 @@
-# zsh﻿
-if [ -f "${HOME}/.zsh_aliases" ] ; then
-  source "${HOME}/.zsh_aliases"
-fi
-
-if [ -f "${HOME}/.zsh_functions" ] ; then
-    source "${HOME}/.zsh_functions"
-fi
-
-if (which zprof > /dev/null) ;then
-    zprof | less
-fi
 # 少し凝った zshrc
 # License : MIT
 # http://mollifier.mit-license.org/
@@ -30,7 +18,6 @@ bindkey -e
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
-
 # promptinitを使う場合はこちらを読み込む
 # 利用可能なpromptの設定を見る
 # $ prompt -l
@@ -162,7 +149,7 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
-export DISPLAY=localhost:0.0
+# export DISPLAY=localhost:0.0
 
 # zplug setting
 # Check if zplug is installed
@@ -181,6 +168,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
 zplug "plugins/git", from:oh-my-zsh
 zplug "s7anley/zsh-geeknote"
+zplug "zsh-users/zaw", use:"*zaw.zsh"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -256,3 +244,12 @@ function tmux_automatically_attach_session()
 tmux_automatically_attach_session
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# zsh﻿
+if [ -f "${HOME}/.zsh_aliases" ] ; then
+    source "${HOME}/.zsh_aliases"
+fi
+
+if [ -f "${HOME}/.zsh_functions" ] ; then
+    source "${HOME}/.zsh_functions"
+fi
