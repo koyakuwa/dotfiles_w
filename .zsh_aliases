@@ -92,3 +92,9 @@ function Emacs() {
     EMACS='emacs'
     $EMACS $@ &
 }
+
+function sup() {
+    SUP='SumatraPDF'
+    $SUP $@ &
+}
+
