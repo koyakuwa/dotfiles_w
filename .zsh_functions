@@ -38,3 +38,6 @@ function zaw-src-ghq-cd() {
 zaw-register-src -n ghq-list zaw-src-ghq-list
 
 bindkey "^]" zaw-ghq-list
+
+# zawでhistory検索
+bindkey '^r' zaw-history
