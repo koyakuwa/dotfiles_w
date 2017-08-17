@@ -325,6 +325,33 @@ layer
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; ime setting >>
+  ;; 入力ソースの設定が必要
+  (setq default-input-method "W32-IME")
+  ;; 日本語入力時にカーソルの色を変える設定 (色は適宜変えてください)
+  (add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "red")))
+  (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "orange")))
+  ;; ミニバッファに移動した際は最初に日本語入力が無効な状態にする
+  (add-hook 'minibuffer-setup-hook 'deactivate-input-method)
+
+  ;; isearch に移行した際に日本語入力を無効にする
+  (add-hook 'isearch-mode-hook '(lambda ()
+                                  (deactivate-input-method)
+                                  (setq w32-ime-composition-window (minibuffer-window))))
+  (add-hook 'isearch-mode-end-hook '(lambda () (setq w32-ime-composition-window nil)))
+  ;; evilのnormal-stateになったらIMEを英語に戻す
+  (add-hook 'evil-hybrid-state-entry-hook
+            '(lambda () (deactivate-input-method)))
+  ;; EmacsをアクティブにしたらIMEを英語に戻す
+  (add-hook 'focus-in-hookaaaああああaaaa
+            '(lambda () (deactivate-input-method)))
+  ;; helm 使用中に日本語入力を無効にする
+  (advice-add 'helm :around '(lambda (orig-fun &rest args)
+                               (let ((select-window-functions nil)
+                                     (w32-ime-composition-window (minibuffer-window)))
+                                 (deactivate-input-method)
+                                 (apply orig-fun args))))
+  ;; >>
   (global-set-key (kbd "C-;") 'evil-escape)
   (setq markdown-open-command "vmd")
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
