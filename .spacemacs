@@ -329,8 +329,8 @@ you should place your code here."
   ;; 入力ソースの設定が必要
   (setq default-input-method "W32-IME")
   ;; 日本語入力時にカーソルの色を変える設定 (色は適宜変えてください)
-  (add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "red")))
-  (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "orange")))
+  (add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "orange")))
+  (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "white")))
   ;; ミニバッファに移動した際は最初に日本語入力が無効な状態にする
   (add-hook 'minibuffer-setup-hook 'deactivate-input-method)
 
@@ -343,7 +343,7 @@ you should place your code here."
   (add-hook 'evil-hybrid-state-entry-hook
             '(lambda () (deactivate-input-method)))
   ;; EmacsをアクティブにしたらIMEを英語に戻す
-  (add-hook 'focus-in-hookaaaああああaaaa
+  (add-hook 'focus-in-hook
             '(lambda () (deactivate-input-method)))
   ;; helm 使用中に日本語入力を無効にする
   (advice-add 'helm :around '(lambda (orig-fun &rest args)
