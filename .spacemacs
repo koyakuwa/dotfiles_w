@@ -149,7 +149,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Myrica M"
-                               :size 14
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -329,8 +329,8 @@ you should place your code here."
   ;; 入力ソースの設定が必要
   (setq default-input-method "W32-IME")
   ;; 日本語入力時にカーソルの色を変える設定 (色は適宜変えてください)
-  (add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "orange")))
-  (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "white")))
+  ;; (add-hook 'w32-ime-on-hook '(lambda () (set-cursor-color "orange")))
+  ;; (add-hook 'w32-ime-off-hook '(lambda () (set-cursor-color "white")))
   ;; ミニバッファに移動した際は最初に日本語入力が無効な状態にする
   (add-hook 'minibuffer-setup-hook 'deactivate-input-method)
 
