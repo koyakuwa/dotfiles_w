@@ -49,6 +49,7 @@ function wincmd()
 alias cmd='winpty cmd'
 alias psh='winpty powershell'
 alias python='winpty python'
+alias crowi='winpty crowi'
 alias ifconfig='wincmd ipconfig'
 alias netstat='wincmd netstat'
 alias netsh='wincmd netsh'
