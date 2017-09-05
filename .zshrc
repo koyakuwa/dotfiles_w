@@ -167,6 +167,7 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "s7anley/zsh-geeknote"
 zplug "zsh-users/zaw", use:"*zaw.zsh"
 # zplug "b4b4r07/enhancd", use:init.sh
+# zplug 'dracula/zsh', as:theme
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
