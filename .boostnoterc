@@ -1,0 +1,33 @@
+{
+    "amaEnabled": true,
+    "editor": {
+        "fontFamily": "Monaco, Consolas",
+        "fontSize": "14",
+        "indentSize": "2",
+        "indentType": "space",
+        "keyMap": "default",
+        "switchPreview": "BLUR",
+        "theme": "monokai"
+    },
+    "hotkey": {
+        "toggleFinder": "Ctrl+ Alt + S",
+        "toggleMain": "Ctrl + Alt + L"
+    },
+    "isSideNavFolded": false,
+    "listStyle": "DEFAULT",
+    "listWidth": 300,
+    "navWidth": 200,
+    "preview": {
+        "codeBlockTheme": "monokai",
+        "fontFamily": "Lato",
+        "fontSize": "14",
+        "lineNumber": true
+    },
+    "sortBy": "UPDATED_AT",
+    "ui": {
+        "defaultNote": "ALWAYS_ASK",
+        "disableDirectWrite": false,
+        "theme": "default"
+    },
+    "zoom": 1
+}
