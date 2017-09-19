@@ -1,11 +1,11 @@
 BoldAsFont=-1
 Transparency=high
 OpaqueWhenFocused=yes
-BackgroundColour=0,43,54
 Scrollbar=none
 CursorType=block
 Font=Myrica M
-FontHeight=10
+FontHeight=12
+# 10
 Locale=C
 Charset=UTF-8
 Term=xterm-256color
@@ -32,12 +32,14 @@ Blue=38,139,210
 # BoldWhite=230,230,230
 
 # solarized theme
-ForegroundColour=131,148,150
+# https://github.com/mavnn/mintty-colors-solarized 
+BackgroundColour=  0,43,54
+ForegroundColour=175,197,200
+# 131,148,150
 CursorColour=220,50,47
-
 Black=7,54,66
-BoldBlack=         0,  43,  54
-Red=             220,  50,  47
+BoldBlack=0,43,54
+Red=220,50,47
 BoldRed=203,75,22
 Green=133,153,0
 BoldGreen=88,110,117
