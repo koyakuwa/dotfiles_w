@@ -150,6 +150,7 @@ elif which putclip >/dev/null 2>&1 ; then
 fi
 
 # export DISPLAY=localhost:0.0
+eval `dircolors ~/src/github.com/seebi/dircolors-solarized/dircolors.ansi-dark`
 
 # zplug setting
 # Check if zplug is installed

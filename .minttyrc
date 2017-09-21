@@ -33,7 +33,7 @@ Blue=38,139,210
 
 # solarized theme
 # https://github.com/mavnn/mintty-colors-solarized 
-BackgroundColour=  0,43,54
+BackgroundColour=0,43,54
 ForegroundColour=175,197,200
 # 131,148,150
 CursorColour=220,50,47
