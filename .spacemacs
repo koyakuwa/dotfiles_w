@@ -373,7 +373,7 @@ you should place your code here."
     ;; ....
     (setq org-latex-pdf-process '("latexmk %f"))
     (add-to-list 'org-latex-classes
-                 '("thesis"
+                 '("T1"
                    "\\documentclass{ujarticle}
                 [NO-PACKAGES]
                 [NO-DEFAULT-PACKAGES]
@@ -400,6 +400,41 @@ you should place your code here."
                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                    ("\\paragraph{%s}" . "\\paragraph*{%s}")
                    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+        (add-to-list 'org-latex-classes
+                 '("T2"
+                   "\\documentclass[twocolumn,a4j,10.5pt]{ujarticle}
+                [NO-PACKAGES]
+                [NO-DEFAULT-PACKAGES]
+                \\usepackage[dvipdfmx]{graphicx}
+                \\usepackage{amsmath,amssymb}
+                \\usepackage{booktabs}
+                \\usepackage{float}
+                \\usepackage{textcomp}
+                \\usepackage{bm}
+                \\usepackage{multirow}
+                \\usepackage{nidanfloat}
+                \\usepackage[dvipdfmx]{graphicx}
+                \\usepackage{fancybox,ascmac}
+                \\usepackage{setspace}
+                \\usepackage{tabularx}
+                \\usepackage{titlesec}
+                \\usepackage{url}
+                \\usepackage{hyperref}
+                \\usepackage{longtable}
+                \\usepackage{nomencl}
+                \\renewcommand{\\figurename}{Fig}
+                \\renewcommand{\\tablename}{Table}
+                \\renewcommand{\\abstractname}{Abstract}
+                % 書式設定
+                %　sectionのスタイル
+                \\titleformat*{\\section}{\\bfseries}
+                \\titleformat*{\\subsection}{\\bfseries}
+                "
+                ("\\section{%s}" . "\\section*{%s}")
+                ("\\subsection{%s}" . "\\subsection*{%s}")
+                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
     )
   (setq org-ref-default-bibliography '("~/gdrive/bib/library.bib")
         ;; org-ref-pdf-directory "~/Papers/"
