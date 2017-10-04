@@ -57,7 +57,7 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     ;; spell-checking
+     spell-checking
      syntax-checking
      version-control
      python
@@ -161,10 +161,10 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Myrica M"
-                               :size 15
+                               :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.3)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -422,9 +422,11 @@ you should place your code here."
                 \\usepackage{hyperref}
                 \\usepackage{longtable}
                 \\usepackage{nomencl}
+                \\usepackage{fancyhdr}
                 \\renewcommand{\\figurename}{Fig}
                 \\renewcommand{\\tablename}{Table}
                 \\renewcommand{\\abstractname}{Abstract}
+                \\def\\vector#1{\\mbox{\\boldmath $#1$}}
                 % 書式設定
                 %　sectionのスタイル
                 \\titleformat*{\\section}{\\bfseries}
@@ -442,8 +444,10 @@ you should place your code here."
         )
   (setq japanese-TeX-engine-default 'uptex) ;; upTeX を標準に
   (setq org-html-htmlize-output-type 'nil)
-  (setq japanese-TeX-engine-default 'uptex) ;; upTeX を標準に
-  (setq org-html-htmlize-output-type 'nil)
+  (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
+  (setq-default ispell-program-name "aspell")
+  (eval-after-load "ispell"
+    '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

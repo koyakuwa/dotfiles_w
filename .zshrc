@@ -18,15 +18,6 @@ bindkey -e
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
-# promptinitを使う場合はこちらを読み込む
-# 利用可能なpromptの設定を見る
-# $ prompt -l
-# promptを設定する
-# $ prompt [prompt名]
-autoload -U promptinit
-promptinit
-# promptを独自で変更
-PROMPT='%m:%F{green}%c%f %n%# '
 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
@@ -184,6 +175,60 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
+
+
+# todoist and toggl ...............
+function toggl-start-todoist () {
+    local selected_item_id=`todoist --project-namespace --namespace list | peco | cut -d ' ' -f 1`
+    if [ ! -n "$selected_item_id" ]; then
+        return 0
+    fi
+    local selected_item_content=`todoist --csv show ${selected_item_id} | grep Content | cut -d',' -f2- | sed s/\"//g`
+    if [ -n "$selected_item_content" ]; then
+        BUFFER="toggl start \"${selected_item_content}\""
+        CURSOR=$#BUFFER
+        zle accept-line
+    fi
+}
+zle -N toggl-start-todoist
+bindkey '^xts' toggl-start-todoist
+
+toggl_current() {
+    local tgc=$(toggl --cache --csv current)
+    local tgc_time=$(echo $tgc | grep Duration | cut -d ',' -f 2)
+    local tgc_dsc=$(echo $tgc | grep Description | cut -d ',' -f 2 | cut -c 1-15)
+    local short_tgc_dsc=$(if [ $(echo $tgc_dsc | wc -m) -lt 15 ]; then echo $tgc_dsc; else echo "${tgc_dsc}.."; fi)
+    if [ ! -n "$tgc_time" ]; then
+        echo "%{$bg[red]%}NoTimeEntry%{$reset_color%}"
+    else
+        echo "%{$bg[green]%}%{$fg[black]%}[$tgc_time $short_tgc_dsc]%{$reset_color%}"
+    fi
+}
+alias tl='todoist --project-namespace --namespace --color list'
+alias tgc='toggl current'
+alias tge='toggl stop'
+local toggl_info="$(toggl_current)"
+
+# ---------------------------------
+
+if [[ -x `which colordiff` ]]; then
+    alias diff='colordiff -u'
+else
+    alias diff='diff -u'
+fi
+
+# promptinitを使う場合はこちらを読み込む
+# 利用可能なpromptの設定を見る
+# $ prompt -l
+# promptを設定する
+# $ prompt [prompt名]
+autoload -U promptinit
+promptinit
+# promptを独自で変更
+# PROMPT="$(toggl_current) %m:%F{green}%c%f %n%# "
+# PROMPT="[%*] ${toggl_info} %F{green}%c%f %# "
+PROMPT="%n@%m:%F{green}%c%f %# "
+
 
 function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
 function is_osx() { [[ $OSTYPE == darwin* ]]; }
