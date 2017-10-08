@@ -74,7 +74,13 @@ alias atom='atom.cmd'
 alias apm='apm.cmd'
 alias diff='colordiff'
 alias arduino='wincmd arduino'
-alias open='start'
+# alias open='start'
+function opencmd()
+{
+    cmd 2>&1 | start $1
+}
+
+alias open='opencmd'
 alias py2='source /c/tools/Anaconda3/Scripts/activate py27'
 alias py3='source /c/tools/Anaconda3/Scripts/deactivate'
 alias kobito='kobito &'

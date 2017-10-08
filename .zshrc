@@ -229,6 +229,10 @@ promptinit
 # PROMPT="[%*] ${toggl_info} %F{green}%c%f %# "
 PROMPT="%n@%m:%F{green}%c%f %# "
 
+# complete hard drives in msys2
+drives=$(mount | sed -rn 's#^[A-Z]: on /([a-z]).*#\1#p' | tr '\n' ' ')
+zstyle ':completion:*' fake-files /: "/:$drives"
+unset drives
 
 function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
 function is_osx() { [[ $OSTYPE == darwin* ]]; }

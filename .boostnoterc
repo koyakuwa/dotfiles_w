@@ -7,18 +7,18 @@
         "indentType": "space",
         "keyMap": "default",
         "switchPreview": "BLUR",
-        "theme": "monokai"
+        "theme": "seti"
     },
     "hotkey": {
         "toggleFinder": "Ctrl+ Alt + S",
-        "toggleMain": "Ctrl + Alt + L"
+        "toggleMain": "Ctrl + Alt + B"
     },
     "isSideNavFolded": false,
     "listStyle": "DEFAULT",
     "listWidth": 300,
     "navWidth": 200,
     "preview": {
-        "codeBlockTheme": "monokai",
+        "codeBlockTheme": "seti",
         "fontFamily": "Lato",
         "fontSize": "14",
         "lineNumber": true
