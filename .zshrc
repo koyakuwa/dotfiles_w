@@ -163,6 +163,7 @@ zplug "jhawthorn/fzy", \
     rename-to:fzy, \
     hook-build:"make && sudo make install"
 zplug "b4b4r07/enhancd", use:init.sh
+zplug "greymd/tmux-xpanes"
 # zplug 'dracula/zsh', as:theme
 
 # Install plugins if there are plugins that have not been installed
@@ -175,9 +176,12 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
+ENHANCD_FILTER=fzy
+export ENHANCD_FILTER
+export GOPATH=$HOME
+export PATH=$PATH:$GOPATH/bin
 
-
-# todoist and toggl ...............
+# todoist and tog 2gl ...............
 function toggl-start-todoist () {
     local selected_item_id=`todoist --project-namespace --namespace list | peco | cut -d ' ' -f 1`
     if [ ! -n "$selected_item_id" ]; then
