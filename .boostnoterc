@@ -7,7 +7,7 @@
         "indentType": "space",
         "keyMap": "default",
         "switchPreview": "BLUR",
-        "theme": "seti"
+        "theme": "dracula"
     },
     "hotkey": {
         "toggleFinder": "Ctrl+ Alt + S",
@@ -18,7 +18,7 @@
     "listWidth": 300,
     "navWidth": 200,
     "preview": {
-        "codeBlockTheme": "seti",
+        "codeBlockTheme": "dracula",
         "fontFamily": "Lato",
         "fontSize": "14",
         "lineNumber": true
