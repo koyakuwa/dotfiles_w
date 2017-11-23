@@ -182,6 +182,7 @@ export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
 
 # todoist and tog 2gl ...............
+# TODO don't move in msys2
 function toggl-start-todoist () {
     local selected_item_id=`todoist --project-namespace --namespace list | peco | cut -d ' ' -f 1`
     if [ ! -n "$selected_item_id" ]; then
@@ -194,7 +195,7 @@ function toggl-start-todoist () {
         zle accept-line
     fi
 }
-zle -N toggl-start-todoist
+zle -N toggl-start-todois t
 bindkey '^xts' toggl-start-todoist
 
 toggl_current() {
@@ -212,7 +213,8 @@ alias tl='todoist --project-namespace --namespace --color list'
 alias tgc='toggl current'
 alias tge='toggl stop'
 local toggl_info="$(toggl_current)"
-
+hakidashi="今日の掃き出し"
+alias haku='todoist add $hakidashi & toggl start $hakidashi'
 # ---------------------------------
 
 if [[ -x `which colordiff` ]]; then

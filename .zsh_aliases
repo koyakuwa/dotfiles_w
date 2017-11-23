@@ -74,6 +74,7 @@ alias atom='atom.cmd'
 alias apm='apm.cmd'
 alias diff='colordiff'
 alias arduino='wincmd arduino'
+alias mbx='~/myapp/MobaXterm_Portable_v10.4/MobaXterm_Personal_10.4.exe &'
 # alias open='start'
 function opencmd()
 {
