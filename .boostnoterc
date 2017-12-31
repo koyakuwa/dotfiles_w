@@ -27,7 +27,7 @@
     "ui": {
         "defaultNote": "ALWAYS_ASK",
         "disableDirectWrite": false,
-        "theme": "default"
+        "theme": "dark"
     },
     "zoom": 1
 }

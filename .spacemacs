@@ -31,6 +31,9 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     yaml
+     windows-scripts
+     javascript
      rust
      html
      csv
@@ -70,7 +73,7 @@ values."
             c-c++-enable-clang-support t
             )
 
-     vagrant
+     ;; vagrant
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -82,6 +85,7 @@ values."
                                       dracula-theme
                                       seti-theme
                                       solarized-theme
+                                      exec-path-from-shell
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -373,6 +377,7 @@ you should place your code here."
     ;; here goes your Org config :
     ;; ....
     (setq org-latex-pdf-process '("latexmk %f"))
+    (setq org-startup-with-inline-images nil)
     (add-to-list 'org-latex-classes
                  '("T1"
                    "\\documentclass{ujarticle}
@@ -395,12 +400,46 @@ you should place your code here."
                 \\usepackage{url}
                 \\usepackage{hyperref}
                 \\usepackage{longtable}
-                \\usepackage{nomencl}"
+                \\usepackage{nomencl}
+                \\usepackage{fancyhdr}"
                    ("\\section{%s}" . "\\section*{%s}")
                    ("\\subsection{%s}" . "\\subsection*{%s}")
                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                    ("\\paragraph{%s}" . "\\paragraph*{%s}")
                    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+        (add-to-list 'org-latex-classes
+                 '("master-thesis"
+                   "\\documentclass[a4j,11pt]{ujbook}
+                [NO-PACKAGES]
+                [NO-DEFAULT-PACKAGES]
+                \\usepackage[dvipdfmx]{graphicx}
+                \\usepackage{amsmath,amssymb}
+                \\usepackage{booktabs}
+                \\usepackage{float}
+                \\usepackage{textcomp}
+                \\usepackage{bm}
+                \\usepackage{multicol}
+                \\usepackage{multirow}
+                \\usepackage{nidanfloat}
+                \\usepackage[dvipdfmx]{graphicx}
+                \\usepackage{fancybox,ascmac}
+                \\usepackage{setspace}
+                \\usepackage{tabularx}
+                \\usepackage{titlesec}
+                \\usepackage{url}
+                \\usepackage{hyperref}
+                \\usepackage{longtable}
+                \\usepackage{nomencl}
+                \\renewcommand{\\figurename}{Fig}
+                \\renewcommand{\\tablename}{Table}
+                \\renewcommand{\\bibname}{参考文献}
+                \\usepackage{fancyhdr}"
+                   ("\\section{%s}" . "\\section*{%s}")
+                   ("\\subsection{%s}" . "\\subsection*{%s}")
+                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                   ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                   ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
         (add-to-list 'org-latex-classes
                  '("T2"
                    "\\documentclass[twocolumn,a4j,10.5pt]{ujarticle}
@@ -438,8 +477,51 @@ you should place your code here."
                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+        (add-to-list 'org-latex-classes
+                 '("T2X"
+                   "\\documentclass[twocolumn,a4j,10.5pt]{ujarticle}
+                [NO-PACKAGES]
+                [NO-DEFAULT-PACKAGES]
+                \\usepackage[dvipdfmx]{graphicx}
+                \\usepackage{amsmath,amssymb}
+                \\usepackage{booktabs}
+                \\usepackage{float}
+                \\usepackage{textcomp}
+                \\usepackage{bm}
+                \\usepackage{multirow}
+                \\usepackage{nidanfloat}
+                \\usepackage[dvipdfmx]{graphicx}
+                \\usepackage{fancybox,ascmac}
+                \\usepackage{setspace}
+                \\usepackage{tabularx}
+                \\usepackage{titlesec}
+                \\usepackage{url}
+                \\usepackage{hyperref}
+                \\usepackage{longtable}
+                \\usepackage{nomencl}
+                \\usepackage{fancyhdr}
+                \\usepackage[english]{babel}
+                \\renewcommand{\\figurename}{Fig}
+                \\renewcommand{\\tablename}{Table}
+                \\renewcommand{\\abstractname}{Abstract}
+                \\def\\vector#1{\\mbox{\\boldmath $#1$}}
+                % 書式設定
+                %　sectionのスタイル
+                \\titleformat*{\\section}{\\bfseries}
+                \\titleformat*{\\subsection}{\\bfseries}
+                "
+                ("\\section{%s}" . "\\section*{%s}")
+                ("\\subsection{%s}" . "\\subsection*{%s}")
+                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+        (add-to-list 'org-latex-classes
+                     '("T0"
+                       "\\documentclass[twocolumn,a4j,10.5pt]{ujarticle}
+                [NO-PACKAGES]
+                [NO-DEFAULT-PACKAGES]"))
     )
-  (setq org-ref-default-bibliography '("~/gdrive/bib/library.bib")
+  (setq org-ref-default-bibliography '("~/Dropbox//bib/library.bib")
         ;; org-ref-pdf-directory "~/Papers/"
         ;; org-ref-bibliography-notes "~/Papers/notes.org"
         )
@@ -466,7 +548,7 @@ you should place your code here."
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (solarized-theme seti-theme dracula-theme dash-functional smartrep ox-gfm org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib disaster company-c-headers cmake-mode clang-format biblio biblio-core toml-mode racer flycheck-rust seq cargo rust-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core async popup git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl vagrant-tramp vagrant web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data multiple-cursors company-auctex auctex-latexmk auctex csv-mode mozc ddskk cdb ccc geeknote rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby org-projectile org-present org-pomodoro alert log4e gntp org-download mwim htmlize gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck auto-dictionary vmd-mode wolfram-mode thrift stan-mode scad-mode qml-mode matlab-mode julia-mode go-guru go-eldoc company-go go-mode arduino-mode yapfify xterm-color smeargle shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements orgit multi-term mmm-mode markdown-toc markdown-mode magit-gitflow live-py-mode hy-mode helm-pydoc helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help cython-mode company-statistics company-anaconda company auto-yasnippet yasnippet anaconda-mode pythonic ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (yaml-mode powershell ghub let-alist web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern tern coffee-mode org-category-capture solarized-theme seti-theme dracula-theme dash-functional smartrep ox-gfm org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib disaster company-c-headers cmake-mode clang-format biblio biblio-core toml-mode racer flycheck-rust seq cargo rust-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core async popup git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl vagrant-tramp vagrant web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data multiple-cursors company-auctex auctex-latexmk auctex csv-mode mozc ddskk cdb ccc geeknote rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby org-projectile org-present org-pomodoro alert log4e gntp org-download mwim htmlize gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck auto-dictionary vmd-mode wolfram-mode thrift stan-mode scad-mode qml-mode matlab-mode julia-mode go-guru go-eldoc company-go go-mode arduino-mode yapfify xterm-color smeargle shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements orgit multi-term mmm-mode markdown-toc markdown-mode magit-gitflow live-py-mode hy-mode helm-pydoc helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help cython-mode company-statistics company-anaconda company auto-yasnippet yasnippet anaconda-mode pythonic ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map

@@ -34,7 +34,8 @@ Blue=38,139,210
 # solarized theme
 # https://github.com/mavnn/mintty-colors-solarized 
 BackgroundColour=0,43,54
-ForegroundColour=175,197,200
+ForegroundColour=#b4e1fd
+# ForegroundColour=175,197,200
 # 131,148,150
 CursorColour=220,50,47
 Black=7,54,66
@@ -52,3 +53,24 @@ Cyan=42,161,152
 BoldCyan=147,161,161
 White=238,232,213
 BoldWhite=253,246,227
+
+# gopher aci
+# BackgroundColou=#0d1926
+# ForegroundColour=#b4e1fd
+# CursorColour=#b4e1fd
+# Black=#363636
+# BoldBlac=#ff0883
+# Red=#83ff08
+# BoldRed=#ff8308
+# Green=#0883ff
+# BoldGreen=#8308ff
+# Yello=#08ff83
+# BoldYellow=#b6b6b6
+# Blue=#424242
+# BoldBlue=#ff1e8e
+# Magent=#8eff1e
+# BoldMagenta=#ff8e1e
+# Cyan=#1e8eff
+# BoldCyan=#8e1eff
+# Whit=#1eff8e
+# BoldWhite=#c2c2c
