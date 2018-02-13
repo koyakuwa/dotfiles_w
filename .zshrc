@@ -158,6 +158,7 @@ zplug "zsh-users/zsh-completions"
 zplug "plugins/git", from:oh-my-zsh
 zplug "s7anley/zsh-geeknote"
 zplug "zsh-users/zaw", use:"*zaw.zsh"
+zplug "zsh-users/zsh-autosuggestions"
 zplug "jhawthorn/fzy", \
     as:command, \
     rename-to:fzy, \
@@ -180,6 +181,7 @@ ENHANCD_FILTER=fzy
 export ENHANCD_FILTER
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 # todoist and tog 2gl ...............
 # TODO don't move in msys2

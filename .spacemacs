@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     shell-scripts
      yaml
      windows-scripts
      javascript
@@ -158,7 +159,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(solarized-dark
+                         spacemacs-dark
                          spacemacs-dark-disable-background
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -369,6 +371,36 @@ you should place your code here."
                                  (deactivate-input-method)
                                  (apply orig-fun args))))
   ;; >>
+  ;; 句読点を一括返還------------------------
+  (defun replace-punctuation (a1 a2 b1 b2)
+    "Replace periods and commas"
+    (let ((s1 (if mark-active "選択領域" "バッファ全体"))
+          (s2 (concat a2 b2))
+          (b (if mark-active (region-beginning) (point-min)))
+          (e (if mark-active (region-end) (point-max))))
+      (if (y-or-n-p (concat s1 "の句読点を「" s2 "」にしますがよろしいですか?"))
+          (progn
+            (replace-string a1 a2 nil b e)
+            (replace-string b1 b2 nil b e)))))
+  (defun replace-punctuation-ten-maru ()
+    "選択領域またはバッファ全体の句読点を「、。」にします"
+    (interactive)
+    (replace-punctuation "，" "、" "．" "。"))
+  (defun replace-punctuation-comma-maru ()
+    "選択領域またはバッファ全体の句読点を「，。」にします"
+    (interactive)
+    (replace-punctuation "、" "，" "．" "。"))
+  (defun replace-punctuation-comma-period ()
+    "選択領域またはバッファ全体の句読点を「，．」にします"
+    (interactive)
+    (replace-punctuation "、" "，" "。" "．"))
+  (defalias 'replace-punctuation-o 'replace-punctuation-ten-maru)
+  (defalias 'replace-punctuation-\, 'replace-punctuation-comma-maru)
+  (defalias 'replace-punctuation-. 'replace-punctuation-comma-period)
+  (defalias 'tenmaru 'replace-punctuation-ten-maru)
+  (defalias 'commamaru 'replace-punctuation-comma-maru)
+  (defalias 'commaperiod 'replace-punctuation-comma-period)
+  ;; ------------------------
   (global-set-key (kbd "C-;") 'evil-escape)
   (setq markdown-open-command "vmd")
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
@@ -380,7 +412,7 @@ you should place your code here."
     (setq org-startup-with-inline-images nil)
     (add-to-list 'org-latex-classes
                  '("T1"
-                   "\\documentclass{ujarticle}
+                   "\\documentclass[a4j,11pt]{ujarticle}
                 [NO-PACKAGES]
                 [NO-DEFAULT-PACKAGES]
                 \\usepackage[dvipdfmx]{graphicx}
@@ -401,7 +433,9 @@ you should place your code here."
                 \\usepackage{hyperref}
                 \\usepackage{longtable}
                 \\usepackage{nomencl}
-                \\usepackage{fancyhdr}"
+                \\usepackage{fancyhdr}
+                \\renewcommand{\\figurename}{Fig}
+                \\renewcommand{\\tablename}{Table}"
                    ("\\section{%s}" . "\\section*{%s}")
                    ("\\subsection{%s}" . "\\subsection*{%s}")
                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
@@ -412,7 +446,6 @@ you should place your code here."
                    "\\documentclass[a4j,11pt]{ujbook}
                 [NO-PACKAGES]
                 [NO-DEFAULT-PACKAGES]
-                \\usepackage[dvipdfmx]{graphicx}
                 \\usepackage{amsmath,amssymb}
                 \\usepackage{booktabs}
                 \\usepackage{float}
@@ -430,10 +463,13 @@ you should place your code here."
                 \\usepackage{hyperref}
                 \\usepackage{longtable}
                 \\usepackage{nomencl}
+		            \\usepackage{cite}
+                \\usepackage[dvipdfmx]{graphicx}
                 \\renewcommand{\\figurename}{Fig}
                 \\renewcommand{\\tablename}{Table}
                 \\renewcommand{\\bibname}{参考文献}
-                \\usepackage{fancyhdr}"
+                \\usepackage{fancyhdr}
+                \\def\\vector#1{\\mbox{\\boldmath $#1$}}"
                    ("\\section{%s}" . "\\section*{%s}")
                    ("\\subsection{%s}" . "\\subsection*{%s}")
                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
@@ -548,7 +584,7 @@ you should place your code here."
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (yaml-mode powershell ghub let-alist web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern tern coffee-mode org-category-capture solarized-theme seti-theme dracula-theme dash-functional smartrep ox-gfm org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib disaster company-c-headers cmake-mode clang-format biblio biblio-core toml-mode racer flycheck-rust seq cargo rust-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core async popup git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl vagrant-tramp vagrant web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data multiple-cursors company-auctex auctex-latexmk auctex csv-mode mozc ddskk cdb ccc geeknote rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby org-projectile org-present org-pomodoro alert log4e gntp org-download mwim htmlize gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck auto-dictionary vmd-mode wolfram-mode thrift stan-mode scad-mode qml-mode matlab-mode julia-mode go-guru go-eldoc company-go go-mode arduino-mode yapfify xterm-color smeargle shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements orgit multi-term mmm-mode markdown-toc markdown-mode magit-gitflow live-py-mode hy-mode helm-pydoc helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help cython-mode company-statistics company-anaconda company auto-yasnippet yasnippet anaconda-mode pythonic ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (insert-shebang fish-mode company-shell yaml-mode powershell ghub let-alist web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern tern coffee-mode org-category-capture solarized-theme seti-theme dracula-theme dash-functional smartrep ox-gfm org-ref pdf-tools key-chord ivy tablist helm-bibtex parsebib disaster company-c-headers cmake-mode clang-format biblio biblio-core toml-mode racer flycheck-rust seq cargo rust-mode powerline spinner hydra parent-mode projectile pkg-info epl flx smartparens iedit anzu evil goto-chg undo-tree highlight diminish bind-map bind-key packed f dash s helm avy helm-core async popup git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl vagrant-tramp vagrant web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data multiple-cursors company-auctex auctex-latexmk auctex csv-mode mozc ddskk cdb ccc geeknote rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby org-projectile org-present org-pomodoro alert log4e gntp org-download mwim htmlize gnuplot flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck auto-dictionary vmd-mode wolfram-mode thrift stan-mode scad-mode qml-mode matlab-mode julia-mode go-guru go-eldoc company-go go-mode arduino-mode yapfify xterm-color smeargle shell-pop pyvenv pytest pyenv-mode py-isort pip-requirements orgit multi-term mmm-mode markdown-toc markdown-mode magit-gitflow live-py-mode hy-mode helm-pydoc helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help cython-mode company-statistics company-anaconda company auto-yasnippet yasnippet anaconda-mode pythonic ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
