@@ -165,6 +165,7 @@ zplug "jhawthorn/fzy", \
     hook-build:"make && sudo make install"
 zplug "b4b4r07/enhancd", use:init.sh
 zplug "greymd/tmux-xpanes"
+# zplug "Tarrasch/zsh-bd"
 # zplug 'dracula/zsh', as:theme
 
 # Install plugins if there are plugins that have not been installed
